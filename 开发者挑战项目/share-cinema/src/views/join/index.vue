@@ -1,7 +1,9 @@
 <template>
     <div class="join">
         <div class="content">
-            <img src="../../assets/img/logo.png" alt="" class="logo">
+            <img src="../../assets/img/logo1.png" alt="" class="logo">
+            <div style="font-size:35px; text-align:center; font-family: KaiTi"
+            >共享影院</div>
             <input
                 type="text"
                 v-model.trim="channelName"

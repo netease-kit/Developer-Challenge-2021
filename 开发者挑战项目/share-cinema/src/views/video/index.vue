@@ -6,22 +6,19 @@
             :playsinline="true"
             :options="playerOptions"
           ></video-player>
-          <div style="font-size: 25px">【独播】功守道</div>
+          <div style="font-size: 25px">{{name}}</div>
           <div class="hor">
-            <div style="margin-right: 10px;">2017-11-12 | 22分钟 | 内容简介   </div>
-            <el-tag type="info">喜剧</el-tag>
-            <el-tag type="info">短篇</el-tag>
-            <el-tag type="info">剧情</el-tag>
+            <div style="margin-right: 10px;">{{description}}   </div>
+            <el-tag v-for="t in type" :key="t" type="info">{{t}}</el-tag>
           </div>
           <div class="hor">
              <el-image
-                src='static/fengmian.png'
-                style="width:180px;height:250px"
+                :src="'http://127.0.0.1:5000/'+image"
+                style="width:240px;height:135px"
+                fit="fit"
                 ></el-image>
-             <div style="margin-left: 10px">
-               <div>导演: 文章</div>
-               <div>主演: 马云 甄子丹 吴京 邹市明 托尼·贾 李连杰</div>
-               <div>概要: 该片讲述了一个貌不惊人的中年男子路过“华山派”大门时，脑补出自己过五关斩六将夺得武林秘笈的故事。</div>
+             <div style="width:60% ;margin-left: 10px">
+               {{content}}
              </div>
           </div>
   </div>
@@ -32,8 +29,28 @@ export default {
   name: 'VideoPage',
   props: {
     src: {
-        type: String,
-        required: true
+      type: String,
+      required: true
+    },
+    type:{
+      type: Array,
+      required: true
+    },
+    description:{
+      type: String,
+      required: true
+    },
+    name:{
+      type: String,
+      required: true
+    },
+    image:{
+      type: String,
+      required: true
+    },
+    content:{
+      type: String,
+      required: true
     }
   },
   data(){

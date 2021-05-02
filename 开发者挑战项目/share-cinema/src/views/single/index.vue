@@ -3,32 +3,53 @@
         <el-container style="height:100%" direction="vertical">
             <el-header>
                 <el-col :span="4">
-                    <el-breadcrumb separator="/">
-                        <el-breadcrumb-item ::to="{path:'/'}">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item>一起看</el-breadcrumb-item>
-                    </el-breadcrumb>
+                    <div @click="videoNow=false">
+                        <el-breadcrumb separator="/">
+                            <el-breadcrumb-item >首页</el-breadcrumb-item>
+                            <el-breadcrumb-item v-show="videoNow">一起看</el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </div>
                 </el-col>
                 <el-col :span="16"></el-col>
                 <el-col :span="4"></el-col>
             </el-header>
             <el-container>
                 <el-main>
-                    <VideoPage :src=src>
-                    </VideoPage>
+                    <div v-if="!videoNow" class="hor1">
+                        <div v-for="item in videoData" :key="item.id">
+                            <div style="margin-right: 20px; text-align:center; cursor: pointer;" @click="createVideoPage(item.id)">
+                            <el-image
+                            style="width:240px; height:135px"
+                            fit="fit"
+                            :src="'http://127.0.0.1:5000/'+item.image"
+                            ></el-image>
+                            <div>{{item.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <VideoPage v-else
+                        :src="src"
+                        :description="description"
+                        :name ="name"
+                        :image="img"
+                        :type ="type"
+                        :content="content"
+                    ></VideoPage>
                 </el-main>
                 <el-aside class="content">
-                    <div style="min-height: 85%">
+                    <div class="tab-bar">
+                        <el-button type="info" v-if="isSilence" icon="el-icon-turn-off-microphone" @click="setOrRelieveSilence"></el-button>
+                        <el-button type="info" v-else icon="el-icon-microphone" @click="setOrRelieveSilence"></el-button>
+                        <el-button type="danger" icon="el-icon-phone-outline" @click="handleOver"></el-button>
+                        <el-button type="info" v-if="isStop" icon="el-icon-video-camera" @click="stopOrOpenVideo"></el-button>
+                        <el-button type="info" v-else icon="el-icon-video-camera-solid" @click="stopOrOpenVideo"></el-button>
+                    </div>
+                    <div>
                      <!--画面div-->
                     <div class="main-window" ref='large'></div>
                     <!--小画面div-->
                     <div class="main-window" ref='small'></div>
                     </div>
-                    <!--底层栏-->
-                    <ul class="tab-bar">
-                        <li :class="{silence:true, isSilence}" @click="setOrRelieveSilence"></li>
-                        <li class="over" @click="handleOver"></li>
-                        <li :class="{stop:true,isStop}" @click="stopOrOpenVideo"></li>
-                    </ul>
                 </el-aside>
             </el-container>
         </el-container>
@@ -42,6 +63,7 @@
     import config from '../../../config'
     import { getToken } from '../../common'
     import VideoPage from '../video/index.vue'
+    import axios from 'axios'
 
     export default {
         name: 'single',
@@ -56,10 +78,25 @@
                 localUid: Math.ceil(Math.random() * 1e5),
                 localStream: null,
                 remoteStream: null,
-                src: "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/431f895b-797f-40bf-aa8e-c7bfe31a7175.mp4"
+                videoData: [],
+                videoNow: false,
+                src: "",
+                description: "",
+                type: [],
+                name: "",
+                img: "",
+                content: "",
             }
         },
         mounted () {
+            // 获取后台数据
+            axios.get('http://127.0.0.1:5000/video/video_list', {
+
+            }).then(res=>{
+                this.videoData = res.data.video_list
+                console.log(this.videoData)
+            }).catch(err=>console.log(err))
+
             // 初始化音视频实例
             console.warn('初始化音视频sdk')
             window.self = this
@@ -135,6 +172,17 @@
             }
         },
         methods: {
+            createVideoPage(id){
+                this.videoNow = true
+                console.log(id)
+                console.log(this.videoData[id-1])
+                this.src = this.videoData[id-1].url
+                this.description = this.videoData[id-1].info
+                this.type = this.videoData[id-1].type
+                this.name = this.videoData[id-1].name
+                this.img = this.videoData[id-1].image
+                this.content = this.videoData[id-1].content
+            },
             getToken() {
                 return getToken({
                     uid: this.localUid,
@@ -328,6 +376,12 @@ html,body,.el-container,.homeBox{
     align-items: center;
   }
 
+  .hor1{
+      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+  }
+
   .el-aside {
     background-color: #E9EEF3;
     color: #333;
@@ -346,8 +400,9 @@ html,body,.el-container,.homeBox{
     flex-direction: column;
 
     .content {
-        width: 20%;
+        width: 28%;
         position: relative;
+        background: #181824;
 
         .main-window {
             
