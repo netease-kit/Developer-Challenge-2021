@@ -27,4 +27,7 @@
 ![avatar](move.png)
 
 5、项目演示视频（可选）
+
+![avatar](demo.png)
+
 <https://www.bilibili.com/video/BV1XB4y1c7q3/>
