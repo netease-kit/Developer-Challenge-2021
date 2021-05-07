@@ -28,6 +28,18 @@
 
 5、项目演示视频（可选）
 
-![avatar](demo.png)
+图文模式
+
+![avatar](demo.png){:height="50%" width="50%"}
 
 <https://www.bilibili.com/video/BV1XB4y1c7q3/>
+
+
+视频直播混合模式
+
+![avatar](demo1.png)
+
+<https://www.bilibili.com/video/BV1FB4y1w7Vd/>
+
+
+END
