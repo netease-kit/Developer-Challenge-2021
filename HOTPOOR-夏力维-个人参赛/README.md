@@ -30,7 +30,7 @@
 
 图文模式
 
-![avatar](demo.png){:height="50%" width="50%"}
+![avatar](demo.png)
 
 <https://www.bilibili.com/video/BV1XB4y1c7q3/>
 
