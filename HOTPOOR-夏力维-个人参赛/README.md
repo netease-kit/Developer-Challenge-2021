@@ -27,6 +27,4 @@
 ![avatar](move.png)
 
 5、项目演示视频（可选）
-<video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
-<source id="mp4" src="DEMO视频.mov" type="video/mp4">
-</video>
+<https://www.bilibili.com/video/BV1XB4y1c7q3/>
