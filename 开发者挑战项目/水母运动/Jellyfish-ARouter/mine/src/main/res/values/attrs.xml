@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="SettingsItem">
+    <attr name="icon_src" format="reference" />
+    <attr name="des" format="string" />
+    <attr name="text" format="string" />
+    <attr name="text_color" format="reference" />
+    <attr name="text_gravity_end" format="boolean" />
+  </declare-styleable>
+
+</resources>

@@ -1,0 +1,107 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+// 代替annotationProcessor的部分
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.logic.jellyfish"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('fish.jks')
+            storePassword '12345678'
+            keyAlias 'fish'
+            keyPassword '12345678'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        release {
+            storeFile file('fish.jks')
+            storePassword '12345678'
+            keyAlias 'fish'
+            keyPassword '12345678'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled true
+            useProguard true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = "$javaVersion"
+        targetCompatibility = "$javaVersion"
+    }
+
+    kotlinOptions {
+        jvmTarget = "$javaVersion"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+// 可以不手动输入第三方库
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    implementation project(':base')
+    if (!LOGIN_IS_APPLICATION.toBoolean()) {
+        implementation project(':login')
+    }
+    if (!MINE_IS_APPLICATION.toBoolean()) {
+        implementation project(':mine')
+    }
+    if (!WEB_IS_APPLICATION.toBoolean()) {
+        implementation project(':web')
+    }
+    if (!CHAT_IS_APPLICATION.toBoolean()) {
+        implementation project(':chat')
+    }
+    if (!SPORT_IS_APPLICATION.toBoolean()) {
+        implementation project(':sport')
+    }
+    // ARouter
+    implementation "com.alibaba:arouter-api:$aRouterMainVersion"
+    kapt "com.alibaba:arouter-compiler:$aRouterCompilerVersion"
+    // AndroidX
+    implementation "com.google.android.material:material:$materialVersion"
+}

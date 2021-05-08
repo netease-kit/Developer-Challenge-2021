@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/container"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/border_bottom_1dp_ripple"
+  android:gravity="center_vertical"
+  android:orientation="horizontal">
+
+  <ImageButton
+    android:id="@+id/image"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@android:color/transparent"
+    android:clickable="false"
+    android:contentDescription="@null"
+    android:tint="@color/deep_purple_500"
+    tools:src="@mipmap/mine_icon" />
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_weight="1"
+    android:textColor="@color/grey_1000"
+    android:textSize="15sp"
+    tools:text="@string/my_sport" />
+
+  <ImageButton
+    android:layout_width="32dp"
+    android:layout_height="50dp"
+    android:background="@android:color/transparent"
+    android:clickable="false"
+    android:contentDescription="@null"
+    android:src="@drawable/mine_ic_arrow_right"
+    android:tint="@color/deep_purple_500" />
+
+</LinearLayout>
+

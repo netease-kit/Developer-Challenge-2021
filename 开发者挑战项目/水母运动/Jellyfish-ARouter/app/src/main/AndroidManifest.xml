@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.logic.jellyfish">
+  <!-- 允许访问网络 -->
+  <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问GPS定位 -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于申请调用A-GPS模块 -->
+  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 运动时会使用前台服务 -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+  <!--网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM-->
+  <uses-permission
+    android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    tools:ignore="ProtectedPermissions" /> <!-- 访问网络状态 -->
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+  <uses-permission android:name="android.permission.FLASHLIGHT" />
+  <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 8.0 系统需要 -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 多媒体相关 -->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+  <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+  <uses-feature android:name="android.hardware.camera" />
+  <uses-feature android:name="android.hardware.camera.autofocus" />
+  <uses-feature
+    android:glEsVersion="0x00020000"
+    android:required="true" /> <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+  <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
+  <permission
+    android:name="com.logic.jellyfish.permission.RECEIVE_MSG"
+    android:protectionLevel="signature" /> <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+  <uses-permission android:name="com.logic.jellyfish.permission.RECEIVE_MSG" />
+  <!--网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM网易IM-->
+
+  <application
+    android:name=".MainApp"
+    android:allowBackup="true"
+    android:allowClearUserData="true"
+    android:fullBackupContent="@xml/backup_descriptor"
+    android:icon="@mipmap/logo"
+    android:label="@string/app_name"
+    android:largeHeap="true"
+    android:networkSecurityConfig="@xml/network_security_config"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme"
+    android:usesCleartextTraffic="true"
+    tools:ignore="GoogleAppIndexingWarning"
+    tools:targetApi="n">
+
+    <meta-data
+      android:name="design_width_in_dp"
+      android:value="360" />
+    <meta-data
+      android:name="design_height_in_dp"
+      android:value="640" />
+
+    <meta-data
+      android:name="com.amap.api.v2.apikey"
+      android:value="b6ffa70584e636c36229251ea26e13af" />
+
+    <activity
+      android:name=".MainActivity"
+      android:launchMode="singleTask" />
+
+
+    <!--&lt;!&ndash;网易IM&ndash;&gt;-->
+    <!--<meta-data-->
+    <!--android:name="com.netease.nim.appKey"-->
+    <!--android:value="07887bbbbd9bbaa62162da9e90a91d62" /> &lt;!&ndash; 云信后台服务，请使用独立进程。 &ndash;&gt;-->
+    <!--<service-->
+    <!--android:name="com.netease.nimlib.service.NimService"-->
+    <!--android:process=":core" /> &lt;!&ndash; 云信后台辅助服务 &ndash;&gt;-->
+    <!--<service-->
+    <!--android:name="com.netease.nimlib.service.NimService$Aux"-->
+    <!--android:process=":core" /> &lt;!&ndash; 云信后台辅助服务 &ndash;&gt;-->
+    <!--<service-->
+    <!--android:name="com.netease.nimlib.job.NIMJobService"-->
+    <!--android:exported="true"-->
+    <!--android:permission="android.permission.BIND_JOB_SERVICE"-->
+    <!--android:process=":core" /> &lt;!&ndash; 云信监视系统启动和网络变化的广播接收器，保持和 NimService 同一进程 &ndash;&gt;-->
+    <!--<receiver-->
+    <!--android:name="com.netease.nimlib.service.NimReceiver"-->
+    <!--android:exported="false"-->
+    <!--android:process=":core">-->
+    <!--<intent-filter>-->
+    <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+    <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
+    <!--</intent-filter>-->
+    <!--</receiver> &lt;!&ndash; 云信进程间通信 Receiver &ndash;&gt;-->
+    <!--<receiver android:name="com.netease.nimlib.service.ResponseReceiver" /> &lt;!&ndash; 云信进程间通信service &ndash;&gt;-->
+    <!--<service android:name="com.netease.nimlib.service.ResponseService" /> &lt;!&ndash; 云信进程间通信provider &ndash;&gt;-->
+    <!--&lt;!&ndash; android:authorities="{包名}.ipc.provider", 请将com.netease.nim.demo替换为自己的包名 &ndash;&gt;-->
+    <!--<provider-->
+    <!--android:name="com.netease.nimlib.ipc.NIMContentProvider"-->
+    <!--android:authorities="com.logic.jellyfish.sample.ipc.provider"-->
+    <!--android:exported="false"-->
+    <!--android:process=":core" />-->
+    <!--&lt;!&ndash;网易IM&ndash;&gt;-->
+  </application>
+
+</manifest>

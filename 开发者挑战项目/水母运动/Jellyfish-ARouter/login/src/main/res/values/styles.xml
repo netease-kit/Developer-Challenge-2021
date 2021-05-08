@@ -1,0 +1,24 @@
+<resources>
+
+  <!-- Base application theme. -->
+
+  <style name="login_LoginEditText">
+    <item name="android:layout_width">@dimen/login_edit_text_width</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">24dp</item>
+    <item name="android:background">@drawable/login_btn_rounded_translucent</item>
+    <item name="android:paddingStart">20dp</item>
+    <item name="android:paddingEnd">0dp</item>
+  </style>
+
+  <style name="login_ConfirmButton">
+    <item name="android:layout_width">@dimen/login_edit_text_width</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">32dp</item>
+    <item name="android:background">@drawable/login_btn_rounded_green_300</item>
+    <item name="android:paddingStart">20dp</item>
+    <item name="android:paddingEnd">0dp</item>
+    <item name="android:textColor">@color/grey_100</item>
+  </style>
+
+</resources>

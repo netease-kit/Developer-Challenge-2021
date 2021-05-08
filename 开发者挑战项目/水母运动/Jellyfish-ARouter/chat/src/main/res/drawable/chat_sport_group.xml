@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+  <item
+    android:drawable="@drawable/chat_sport_group_icon"
+    android:width="@dimen/chat_icon"
+    android:height="@dimen/chat_icon" />
+
+</layer-list >
