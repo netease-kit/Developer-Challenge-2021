@@ -1,0 +1,21 @@
+<cu-custom bgColor="bg-cyan" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">导航栏</view>
+</cu-custom>
+<mp-video-swiper 
+  wx:if="{{videoList.length > 0}}"
+  class="video-swiper" 
+  video-list="{{videoList}}" 
+  bindplay="onPlay"
+  bindpause="onPause"
+  bindtimeupdate="onTimeUpdate"
+  bindended="onEnded"
+  binderror="onError"
+  bindwaiting="onWaiting"
+  bindprogress="onProgress"
+  bindloadedmetadata="onLoadedMetaData"
+  bindchange="bindChange"
+></mp-video-swiper>
+
+<canvas canvas-id="myCanvas" class="myCanvas"></canvas>
+<camera class="myCamera"></camera>
