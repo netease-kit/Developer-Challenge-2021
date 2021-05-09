@@ -1,11 +1,3 @@
-# Author:       coneypo
-# Blog:         http://www.cnblogs.com/AdaminXie/
-# Github:       https://github.com/coneypo/Smile_Detector
-
-# Created on:   2018-01-27
-# Updated on:   2018-10-09
-
-# use the saved model
 from sklearn.externals import joblib
 
 import ML_ways_sklearn

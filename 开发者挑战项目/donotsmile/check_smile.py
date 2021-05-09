@@ -1,19 +1,8 @@
-# Author:       coneypo
-# Blog:         http://www.cnblogs.com/AdaminXie/
-# Github:       https://github.com/coneypo/Smile_Detector
-
-# Created on:   2018-01-27
-# Updated on:   2018-10-09
-
-# use the saved model
 import joblib
 
 from get_features import get_features
 import ML_ways_sklearn
 
-
-# path of test img
-# path_test_img = "./i000sb-fn.jpg"
 
 def isSmile(imgPath):
     path_test_img = imgPath

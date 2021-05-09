@@ -1,13 +1,3 @@
-# Author:       coneypo
-# Blog:         http://www.cnblogs.com/AdaminXie/
-# Github:       https://github.com/coneypo/Smile_Detector
-
-# Created on:   2018-01-27
-# Updated on:   2018-10-09
-
-# 显示嘴部特征点
-# Draw the positions of someone's lip
-
 import dlib         # 人脸识别的库 Dlib
 import cv2          # 图像处理的库 OpenCv
 from get_features import get_features   # return the positions of feature points

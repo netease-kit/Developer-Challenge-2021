@@ -1,10 +1,3 @@
-# Author:       coneypo
-# Blog:         http://www.cnblogs.com/AdaminXie/
-# Github:       https://github.com/coneypo/Smile_Detector
-
-# Created on:   2018-01-27
-# Updated on:   2018-10-09
-
 import dlib  # 人脸处理的库 Dlib
 import numpy as np  # 数据处理的库 numpy
 import cv2  # 图像处理的库 OpenCv

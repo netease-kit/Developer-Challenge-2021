@@ -1,11 +1,3 @@
-# Author:       coneypo
-# Blog:         http://www.cnblogs.com/AdaminXie/
-# Github:       https://github.com/coneypo/Smile_Detector
-
-# Created on:   2018-01-27
-# Updated on:   2018-10-09
-
-# pandas 读取 CSV
 import pandas as pd
 
 # 分割数据
