@@ -1,8 +1,0 @@
-<cu-custom bgColor="bg-cyan" isBack="{{true}}">
-	<view slot="content">不要笑</view>
-</cu-custom>
-<view class="container light bg-cyan">
-  <view>
-    <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap="videoPage">开始挑战</button>
-  </view>
-</view>

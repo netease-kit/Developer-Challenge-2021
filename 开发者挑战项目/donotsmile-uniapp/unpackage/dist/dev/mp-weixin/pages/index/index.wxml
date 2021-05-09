@@ -1,0 +1,1 @@
+<view><cu-custom vue-id="8dd740cc-1" bgColor="bg-yellow" bind:__l="__l" vue-slots="{{['content']}}"><view slot="content">每日挑战</view></cu-custom><view class="flex justify-center align-center" style="height:60vh;"><view><navigator url="../challenge/challenge"><button class="cu-btn bg-yellow">开始忍笑大挑战</button></navigator></view></view></view>
