@@ -1,0 +1,82 @@
+
+._header {
+	/* 头部包含背景图 */
+	background-color: #ffda19;
+	width: 100%;
+	/* overflow: hidden; */
+
+	height: 160px;
+}
+._header>._p {
+	/* 放我的和关机图标 */
+	height: 50px;
+	line-height: 50px;
+}
+._header>._p>._span:nth-of-type(1) {
+	display: inline-block;
+	padding-left: 16px;
+	font-size: 18px;
+	font-weight: bold;
+}
+._header>._p>._span:nth-of-type(2) {
+	display: inline-block;
+
+	padding-right: 16px;
+}
+._header>._p>._span:nth-of-type(2)>._i {
+	font-size: 18px;
+	font-weight: bold;
+}
+.info {
+	/* 存放个人信息的 */
+	width: calc(100% - 32px);
+	background-color: #FFFFFF;
+	margin-left: 16px;
+	/* margin-top: -48px; */
+
+	border-radius: 8px;
+	box-shadow: 0 0 6px rgba(255, 218, 25, 0.6);
+}
+.info>._img {
+	width: 66px;
+	height: 66px;
+	border-radius: 66px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 10px;
+	border: 1px solid #ffda19;
+}
+.info_name {
+	text-align: center;
+	font-size: 16px;
+	color: #444444;
+	height: 30px;
+	line-height: 30px;
+}
+.info_text {
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #6F6F6F;
+}
+.info_item {
+	width: calc(100% / 3);
+
+	text-align: center;
+	padding: 4px 0;
+}
+.info_item>._p:nth-of-type(1) {
+	font-size: 12px;
+}
+.info_item>._p:nth-of-type(2) {
+	font-size: 14px;
+	color: #6F6F6F;
+}
+.info_item:nth-of-type(1) {
+	border-radius: 0 0 0 8px;
+}
+.info_item:nth-last-of-type(1) {
+	border-radius: 0 0 8px 0;
+}
+

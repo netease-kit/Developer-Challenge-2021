@@ -1,0 +1,7 @@
+
+.myCanvas {
+    width: 480px;
+    height: 900px;
+    opacity: 1;
+}
+
