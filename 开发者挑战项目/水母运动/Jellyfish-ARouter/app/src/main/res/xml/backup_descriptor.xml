@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+  <!-- Remove the following "exclude" elements to make them a part of the auto backup -->
+  <!-- Exclude the shared preferences file that contains the GCM registrationId -->
+  <!--<exclude-->
+  <!--domain="sharedpref"-->
+  <!--path="preferences_live.xml" />-->
+  <!--<exclude-->
+  <!--domain="sharedpref"-->
+  <!--path="preferences_one.xml" />-->
+  <!--<exclude-->
+  <!--domain="sharedpref"-->
+  <!--path="preferences_two.xml" />-->
+  <!--<exclude-->
+  <!--domain="sharedpref"-->
+  <!--path="config.xml" />-->
+</full-backup-content>

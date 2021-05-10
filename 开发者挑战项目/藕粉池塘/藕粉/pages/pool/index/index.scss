@@ -1,0 +1,24 @@
+.head{
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	padding: 20rpx;
+}
+.head .search{
+	flex: 1;
+}
+.head .map-wrap{
+	display: flex;
+	align-items: center;
+	margin-right: 10rpx;
+}
+
+.grid {
+	margin: 20rpx 0;
+	border-radius: 10rpx;
+	overflow: hidden;
+	
+	.grid-text{
+		font-size: 28rpx;
+	}
+}

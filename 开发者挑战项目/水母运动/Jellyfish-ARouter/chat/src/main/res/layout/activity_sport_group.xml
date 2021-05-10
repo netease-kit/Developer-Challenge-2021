@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:fancy="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="viewmodel"
+      type="com.logic.chat.sport_group.SportGroupViewModel" />
+  </data>
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+      <include layout="@layout/toolbar" />
+
+      <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp">
+
+        <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="加入的团" />
+
+        <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="附近的团" />
+
+        <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="我的创建的团" />
+
+      </com.google.android.material.tabs.TabLayout>
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <mehdi.sakout.fancybuttons.FancyButton
+      android:layout_width="64dp"
+      android:layout_height="64dp"
+      android:layout_gravity="bottom|end"
+      android:layout_marginEnd="24dp"
+      android:layout_marginBottom="24dp"
+      android:onClick="@{(v) -> viewmodel.clickButton(v)}"
+      android:padding="10dp"
+      fancy:fb_defaultColor="#00DAC8"
+      fancy:fb_focusColor="#313131"
+      fancy:fb_iconPaddingLeft="0dp"
+      fancy:fb_iconPaddingRight="0dp"
+      fancy:fb_iconResource="@drawable/ic_group"
+      fancy:fb_radius="64dp" />
+  </FrameLayout>
+
+</layout>

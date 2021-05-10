@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.logic.sport">
+
+  <application>
+
+    <meta-data
+      android:name="com.amap.api.v2.apikey"
+      android:value="b6ffa70584e636c36229251ea26e13af" />
+
+    <activity android:name="com.logic.sport.ready.ReadyActivity" />
+
+    <activity
+      android:name="com.logic.sport.timer.TimerActivity"
+      android:launchMode="singleTask"
+      android:theme="@style/TimerTheme" />
+
+    <activity
+      android:name=".map.MapActivity"
+      android:launchMode="singleTop" />
+
+  </application>
+</manifest>

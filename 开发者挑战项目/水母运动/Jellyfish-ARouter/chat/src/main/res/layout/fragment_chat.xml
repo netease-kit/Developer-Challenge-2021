@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="viewmodel"
+      type="com.logic.chat.ChatViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+      android:onClick="@{() -> viewmodel.navToContact()}"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/border_bottom_1dp"
+      android:drawableStart="@drawable/chat_contract"
+      android:drawablePadding="24dp"
+      android:gravity="center_vertical"
+      android:padding="12dp"
+      android:text="@string/contact" />
+
+    <TextView
+      android:onClick="@{() -> viewmodel.navToSportGroup()}"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/border_bottom_1dp"
+      android:drawableStart="@drawable/chat_sport_group"
+      android:drawablePadding="24dp"
+      android:gravity="center_vertical"
+      android:padding="12dp"
+      android:text="@string/sport_group" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:itemBinding="@{viewmodel.itemBinding}"
+      app:items="@{viewmodel.items}"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      tools:listitem="@layout/item_message" />
+
+  </LinearLayout>
+</layout>

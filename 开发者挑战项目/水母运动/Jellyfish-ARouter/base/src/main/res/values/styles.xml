@@ -1,0 +1,28 @@
+<resources>
+
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:textSize">15sp</item>
+    <item name="android:textColor">@color/grey_800</item>
+    <!--<item name="android:windowAnimationStyle">@style/AnimationActivity</item>-->
+    <!--<item name="android:windowTranslucentStatus">true</item>-->
+    <!--<item name="android:windowTranslucentNavigation">true</item>-->
+    <!--<item name="android:textColor">@android:color/white</item>-->
+  </style>
+
+  <style name="TimerTheme" parent="AppTheme">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">15sp</item>
+  </style>
+
+  <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+</resources>

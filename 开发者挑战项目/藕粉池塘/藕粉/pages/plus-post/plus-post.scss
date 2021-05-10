@@ -1,0 +1,49 @@
+.head{
+	display: flex;
+	.plus-btn{
+		margin-left: auto;
+	}
+}
+.post-txt {
+	width: 100%;
+	padding: 20rpx 0;
+	min-height: 300rpx;
+}
+
+.upload-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 180rpx;
+	height: 180rpx;
+	background-color: #F5F5F5;
+	margin-top: 30rpx;
+	border-radius: 10rpx;
+}
+
+.upload-video{
+	width: 180rpx;
+	height: 180rpx;
+	margin-top: 30rpx;
+}
+
+.choose-item{
+	display: flex;
+	align-items: center;
+	padding: 20rpx;
+	border-bottom: 1px solid #F5F5F5;
+	&:last-child{
+		border: 0;
+	}
+	.txt{
+		margin-left: 20rpx;
+	}
+	.icon{
+		width: 40rpx;
+		height: 40rpx;
+	}
+	.u-icon{
+		margin-left: auto;
+		color: #999;
+	}
+}

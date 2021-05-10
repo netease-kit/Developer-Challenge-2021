@@ -1,0 +1,80 @@
+if (CHAT_IS_APPLICATION.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        if (CHAT_IS_APPLICATION.toBoolean()) {
+            applicationId "com.logic.chat"
+        }
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = "$javaVersion"
+        targetCompatibility = "$javaVersion"
+    }
+
+    kotlinOptions {
+        jvmTarget = "$javaVersion"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+            if (CHAT_IS_APPLICATION.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':base')
+//    implementation project(':uikit')
+    implementation "com.google.android.material:material:$materialVersion"
+    // ARouter
+    implementation "com.alibaba:arouter-api:$aRouterMainVersion"
+    kapt "com.alibaba:arouter-compiler:$aRouterCompilerVersion"
+    // DataBinding RecyclerView
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$bindingCollectionAdapterVersion"
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$bindingCollectionAdapterVersion"
+    //IM
+    implementation 'com.netease.nimlib:basesdk:6.1.1'
+    implementation 'com.netease.nimlib:chatroom:6.1.1'
+    // CircleImageView
+    implementation "com.mikhaellopez:circularimageview:$circularImageview"
+    // FancyButton
+    implementation 'com.github.medyo:fancybuttons:1.9.1'
+
+}
