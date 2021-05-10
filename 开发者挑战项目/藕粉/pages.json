@@ -1,0 +1,213 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#2c2c2c",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabbar/home-1.png",
+				"selectedIconPath": "static/tabbar/home.png",
+				"text": "主页"
+			},
+			{
+				"pagePath": "pages/more/more",
+				"iconPath": "static/tabbar/quanzi-1.png",
+				"selectedIconPath": "static/tabbar/quanzi.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/pool/index/index",
+				"iconPath": "static/tabbar/pool-1.png",
+				"selectedIconPath": "static/tabbar/pool.png",
+				"text": "池塘"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabbar/msg-1.png",
+				"selectedIconPath": "static/tabbar/msg.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/tabbar/my-1.png",
+				"selectedIconPath": "static/tabbar/my.png",
+				"text": "我的"
+			}
+		]
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"backgroundColor": "#fff",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/post-detail/post-detail",
+			"style": {}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		}, {
+			"path": "pages/ucenter/ucenter",
+			"style": {
+				"navigationBarTitleText": "个人主页",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/topic-detail/topic-detail",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"navigationBarTextStyle":"white"
+			}
+		}, {
+			"path": "pages/discuss/discuss",
+			"style": {}
+		}, {
+			"path": "pages/my-discuss/my-discuss",
+			"style": {}
+		}, {
+			"path": "pages/my-topic/my-topic",
+			"style": {}
+		}, {
+			"path": "pages/my-dynamic/my-dynamic",
+			"style": {}
+		}, {
+			"path": "pages/my-collection/my-collection",
+			"style": {}
+		}, {
+			"path": "pages/plus-post/plus-post",
+			"style": {}
+		}, {
+			"path": "pages/message/message",
+			"style": {}
+		}, {
+			"path": "pages/message-list/message-list",
+			"style": {}
+		}, {
+			"path": "pages/my-fans/my-fans",
+			"style": {}
+		}, {
+			"path": "pages/my-follow/my-follow",
+			"style": {}
+		}, {
+			"path": "pages/topic-add/topic-add",
+			"style": {}
+		}, {
+			"path": "pages/more/more",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/topic-cate-list/topic-cate-list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/discuss-add/discuss-add",
+			"style": {}
+		}, {
+			"path": "pages/user-edit/user-edit",
+			"style": {}
+		}, {
+			"path": "pages/user-edit/edit-submit",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/topic-list/topic-list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/jump/jump",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/pool/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/article-detail/article-detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/video-detail/video-detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/chat/chat",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/discuss-list/discuss-list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	    ,{
+            "path" : "pages/choose-topic/choose-topic",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "藕粉池塘",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	}
+}

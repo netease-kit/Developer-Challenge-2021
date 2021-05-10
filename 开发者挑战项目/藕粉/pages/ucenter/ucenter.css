@@ -1,0 +1,114 @@
+.f-wrap {
+	margin-bottom: 30rpx;
+}
+
+.head-bg {
+	width: 100%;
+	height: 500rpx;
+}
+
+.con-c {
+	padding: 30rpx;
+	position: absolute;
+	top: 300rpx;
+	width: 100%;
+}
+
+.user-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	height: 450rpx;
+}
+
+.avatar {
+	width: 130rpx;
+	height: 130rpx;
+	border-radius: 50%;
+	border: 2px solid #FFFFFF;
+	z-index: 999;
+}
+
+.user-info .user-c {
+	background-color: #FFFFFF;
+	border-radius: 30rpx;
+	padding: 30rpx;
+	position: absolute;
+	top: 70rpx;
+	width: 100%;
+	box-shadow: 5rpx 10rpx 20rpx #e6e6e6;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.user-info .user-c .username {
+	font-size: 40rpx;
+	font-weight: bold;
+	margin-top: 70rpx;
+}
+
+.user-info .user-c .num-box {
+	font-size: 24rpx;
+	margin: 20rpx 0;
+	text-align: center;
+}
+
+.user-info .user-c .num-box .txt {
+	color: #999;
+	margin-left: 5rpx;
+}
+
+.user-info .user-c .num-box text {
+	margin-right: 30rpx;
+}
+
+.user-info .user-c .desc {
+	font-size: 22rpx;
+	color: #999;
+}
+
+.user-info .user-c .btn-box {
+	margin-top: 20rpx;
+}
+
+.user-info .user-c .btn-box .btn {
+	margin-right: 20rpx;
+}
+
+.tab-box {
+	margin-bottom: 30rpx;
+}
+
+.info-c {
+	display: flex;
+	flex-direction: column;
+}
+
+.info-c text {
+	margin-bottom: 20rpx;
+	color: #999;
+}
+
+/* 标签 */
+.tag-box {}
+
+.tag-box .tag {
+	padding: 10rpx 20rpx;
+	border-radius: 20rpx;
+	font-size: 24rpx;
+	display: inline-block;
+	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+	background-color: #ffebe5;
+}
+.tag-box .tag:nth-child(2n){
+	background-color: #ecf9f2;
+}
+.tag-box .tag:nth-child(3n){
+	background-color: #fff7e5;
+}
+.tag-box .tag:nth-child(5n){
+	background-color: #b3e0ff;
+}

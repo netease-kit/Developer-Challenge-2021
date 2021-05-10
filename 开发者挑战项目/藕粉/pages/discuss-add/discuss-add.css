@@ -1,0 +1,9 @@
+.dis-title{
+	padding: 30rpx 0;
+}
+.post-txt{
+	width: calc(100% - 40rpx);
+	padding: 20rpx;
+	background-color: #F5F5F5;
+	border-radius: 20rpx;
+}
