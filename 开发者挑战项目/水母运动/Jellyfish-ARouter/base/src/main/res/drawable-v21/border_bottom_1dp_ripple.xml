@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape>
+      <solid android:color="@color/grey_300" />
+    </shape>
+  </item>
+
+  <item android:bottom="1dp">
+    <ripple android:color="@color/grey_600"> <!--波纹颜色-->
+      <item>
+        <shape android:shape="rectangle">
+          <!-- 填充背景色-->
+          <solid android:color="@color/white" />
+        </shape>
+      </item>
+    </ripple>
+  </item>
+
+</layer-list>

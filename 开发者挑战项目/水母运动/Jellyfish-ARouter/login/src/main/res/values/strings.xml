@@ -1,0 +1,13 @@
+<resources>
+  <string name="login_app_name">水母运动</string>
+  <string name="login_confirm">确认</string>
+  <string name="login_hint_verification_code">请输入验证码</string>
+  <string name="login_hint_phone_number">请输入手机号码</string>
+  <string name="login_hint_input_password">请输入密码</string>
+  <string name="login_other_login_way">其他登陆方式</string>
+  <string name="login_now">已有账号，立即登录</string>
+  <string name="login_register">注册</string>
+  <string name="login_read_and_agree">已阅读并同意</string>
+  <string name="login_user_services_agreement">《用户服务协议》</string>
+  <string name="login_hint_confirm_password">请再次确认密码</string>
+</resources>

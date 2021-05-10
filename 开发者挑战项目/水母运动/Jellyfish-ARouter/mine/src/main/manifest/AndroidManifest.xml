@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.logic.mine">
+
+  <application>
+    <activity
+      android:name=".my_event.EventActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".my_following.FollowingActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".my_message.MyMessageActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".my_sport.RecordActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".settings.SettingsActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".settings.about_us.AboutUsActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".settings.change_phone.ChangePhoneActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".settings.feedback.FeedbackActivity"
+      android:launchMode="singleTop" />
+
+    <activity android:name=".my_message.friend_message.FriendMessageActivity" />
+    <activity android:name=".my_message.group_message.GroupMessageActivity" />
+    <activity android:name=".my_message.notification_message.NotificationMessageActivity" />
+
+    <activity android:name=".user.UserActivity" />
+  </application>
+
+</manifest>

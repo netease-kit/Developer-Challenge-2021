@@ -1,0 +1,15 @@
+<resources>
+  <string name="app_name">mine模块</string>
+
+  <string name="my_sport">我的运动</string>
+  <string name="my_event">我的赛事</string>
+  <string name="my_following">我的关注</string>
+  <string name="my_message">我的消息</string>
+  <string name="setting">设置</string>
+  <string name="change_phone_number">更换手机号</string>
+  <string name="feedback">意见反馈</string>
+  <string name="about_us">关于我们</string>
+  <string name="group_msg">团消息</string>
+  <string name="friend_msg">好友消息</string>
+  <string name="notification_msg">通知消息</string>
+</resources>

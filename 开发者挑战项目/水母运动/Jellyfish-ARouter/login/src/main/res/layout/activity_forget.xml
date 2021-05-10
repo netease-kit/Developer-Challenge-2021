@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="viewmodel"
+      type="com.logic.login.forget.ForgetViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.logic.login.login.LoginActivity">
+
+    <ImageView
+      android:layout_width="@dimen/login_ic"
+      android:layout_height="@dimen/login_ic"
+      android:layout_marginTop="@dimen/login_logo_margin_top"
+      android:contentDescription="@null"
+      app:srcCompat="@mipmap/login_logo" />
+
+    <EditText
+      style="@style/login_LoginEditText"
+      android:hint="@string/login_hint_phone_number"
+      android:inputType="number"
+      android:text="@={viewmodel.phoneNumber}" />
+
+    <EditText
+      style="@style/login_LoginEditText"
+      android:hint="@string/login_hint_verification_code"
+      android:inputType="number"
+      android:text="@={viewmodel.verificationCode}" />
+
+    <EditText
+      style="@style/login_LoginEditText"
+      android:hint="@string/login_hint_input_password"
+      android:inputType="textPassword"
+      android:text="@={viewmodel.password}" />
+
+    <Button
+      style="@style/login_ConfirmButton"
+      android:onClick="@{() -> viewmodel.confirm()}"
+      android:text="@string/login_confirm" />
+
+
+  </LinearLayout>
+
+</layout>

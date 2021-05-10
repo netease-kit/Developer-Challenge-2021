@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="viewmodel"
+      type="com.logic.login.register.RegisterViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.logic.login.login.LoginActivity">
+
+    <ImageView
+      android:layout_width="@dimen/login_ic"
+      android:layout_height="@dimen/login_ic"
+      android:layout_marginTop="@dimen/login_logo_margin_top"
+      android:contentDescription="@null"
+      app:srcCompat="@mipmap/login_logo" />
+
+    <EditText
+      style="@style/login_LoginEditText"
+      android:hint="@string/login_hint_phone_number"
+      android:inputType="number"
+      android:text="@={viewmodel.phoneNumber}" />
+
+    <EditText
+      style="@style/login_LoginEditText"
+      android:hint="@string/login_hint_verification_code"
+      android:inputType="number"
+      android:text="@={viewmodel.verificationCode}" />
+
+    <LinearLayout
+      android:layout_width="@dimen/login_edit_text_width"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:background="@drawable/login_btn_rounded_translucent"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+
+      <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:hint="@string/login_hint_input_password"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:text="@={viewmodel.password}" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="@dimen/login_edit_text_width"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:background="@drawable/login_btn_rounded_translucent"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+
+      <EditText
+        android:layout_width="@dimen/login_edit_text_width"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:hint="@string/login_hint_confirm_password"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:text="@={viewmodel.confirmPassword}" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+
+      <androidx.appcompat.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:checked="@={viewmodel.agreement}"
+        android:text="@string/login_read_and_agree"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewmodel.navigateToAgreement()}"
+        android:text="@string/login_user_services_agreement"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <Button
+      android:layout_width="@dimen/login_edit_text_width"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:background="@drawable/login_btn_rounded_green_300"
+      android:onClick="@{(v) -> viewmodel.register(v)}"
+      android:text="@string/login_register"
+      android:textColor="@color/white" />
+
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="0dp"
+      android:layout_marginTop="20dp"
+      android:onClick="@{() -> viewmodel.navigateToLogin()}"
+      android:text="@string/login_now"
+      android:textColor="@color/grey_200"
+      android:textSize="16sp" />
+
+
+  </LinearLayout>
+
+</layout>

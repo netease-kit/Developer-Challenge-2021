@@ -1,0 +1,62 @@
+if (WEB_IS_APPLICATION.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        if (WEB_IS_APPLICATION.toBoolean()) {
+            applicationId "com.logic.web"
+        }
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility = "$javaVersion"
+        targetCompatibility = "$javaVersion"
+    }
+
+    kotlinOptions {
+        jvmTarget = "$javaVersion"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+            if (WEB_IS_APPLICATION.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':base')
+    // X5WebView
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.1072_43646_sharewithdownloadwithfile_withoutGame_obfs_20190429_175122.jar')
+    // ARouter
+    implementation "com.alibaba:arouter-api:$aRouterMainVersion"
+    kapt "com.alibaba:arouter-compiler:$aRouterCompilerVersion"
+}

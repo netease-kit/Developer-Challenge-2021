@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="login_ic">100dp</dimen>
+  <dimen name="login_edit_text_width">270dp</dimen>
+  <dimen name="login_logo_margin_top">36dp</dimen>
+</resources>
