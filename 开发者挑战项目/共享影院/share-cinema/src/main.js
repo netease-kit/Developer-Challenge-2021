@@ -7,9 +7,11 @@ import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 import Axios from 'axios'
-
+import ChatView from "./components/chat/chat.vue";
+    
 Vue.use(ElementUI)
 Vue.use(VideoPlayer)
+Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false
 
 
