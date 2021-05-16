@@ -4,7 +4,7 @@
         {
             "id": 1,
             "name": "阴阳师",
-            "image": "/static/image/阴阳师.jpg",
+            "image": "static/image/阴阳师.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/431f895b-797f-40bf-aa8e-c7bfe31a7175.mp4",
             "type": ["日式","和风","回合制"],
             "info": "2016-06-11 | 游戏 | 内容简介",
@@ -13,7 +13,7 @@
         {
              "id": 2,
              "name": "第五人格",
-            "image": "/static/image/第五人格.jpg",
+            "image": "static/image/第五人格.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/b61a18f9-8127-4ce9-a0fc-25d9289ecbcb.mp4",
            "type": ["对抗","竞技","逃生"],
           "info": "2018-04-02 | 游戏 | 内容简介",
@@ -22,7 +22,7 @@
         {
              "id": 3,
              "name": "天谕",
-            "image": "/static/image/天谕.jpg",
+            "image": "static/image/天谕.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/ecb2edaf-4b01-4e38-bf53-a161c87f69e7.mp4",
             "type": ["MMORPG", "3D", "东方幻想"],
             "info": "2015-06-19 | 游戏 | 内容简介",
@@ -31,7 +31,7 @@
         {
              "id": 4,
              "name": "逆水寒",
-            "image": "/static/image/逆水寒.jpg",
+            "image": "static/image/逆水寒.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/a5ee3bfa-7baf-45ad-9950-2d003259fd81.mp4",
             "type": ["武侠", "3D", "角色扮演"],
             "info": "2018-06-29 | 游戏 | 内容简介",
@@ -40,7 +40,7 @@
         {
              "id": 5,
              "name": "明日之后",
-            "image": "/static/image/明日之后.jpg",
+            "image": "static/image/明日之后.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/bf6bf4f7-ee5b-4e69-b0a2-51d2be6e0024.mp4",
             "type": ["末日生存", "RPG", "手游"],
             "info": "2018-11-02 | 游戏 | 内容简介",
@@ -49,7 +49,7 @@
         {
              "id": 6,
              "name": "一梦江湖",
-            "image": "/static/image/一梦江湖.jpg",
+            "image": "static/image/一梦江湖.jpg",
             "url": "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/aee868a4-e082-40e1-ba47-78d43a99bb9d.mp4",
             "type": ["MMORPG", "武侠", "古风"],
             "info": "2018-02-01 | 游戏 | 内容简介",

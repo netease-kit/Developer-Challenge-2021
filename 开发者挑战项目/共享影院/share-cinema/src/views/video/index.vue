@@ -25,6 +25,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'VideoPage',
   props: {
@@ -65,12 +67,35 @@ export default {
             fluid: true,
             sources:[{
             type: "video/mp4",
-            src: ""
+            src: "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/aee868a4-e082-40e1-ba47-78d43a99bb9d.mp4"
             }],
             techOrder: ['html5', 'flash'],
             width: document.documentElement.clientWidth
-        }
+        },
+        lock: false,
+        localUid: Math.ceil(Math.random() * 1e5),
       }
+  },
+  mounted(){
+    let socket = this.$socketio
+    let channel = this.$route.query.channelName
+    let player = this.$refs.videoPlayer.player
+    let _this = this
+    socket.on('seeking_response', function(msg, cb){
+      if(msg.uid == _this.localUid) return;
+      _this.lock = true
+      player.currentTime(msg.time)
+      setTimeout(function(){
+        _this.lock = false
+      }, 500)
+    })
+    player.on('seeking', function(){
+      if(_this.lock) return;
+      let time = this.currentTime()
+      console.log('video_seeking', time)
+      socket.emit('video_seeking',
+      {room: channel, time: time, uid: _this.localUid})
+    })
   },
   watch:{
       src:{

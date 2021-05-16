@@ -129,7 +129,7 @@ export default {
   mounted() {
     // 获取后台数据
     axios
-      .get("http://127.0.0.1:5000/video/video_list", {})
+      .get("http://127.0.0.1:5000/video_list", {})
       .then((res) => {
         this.videoData = res.data.video_list;
         console.log(this.videoData);
@@ -274,6 +274,15 @@ export default {
           message(`${error}: 请检查appkey或者token是否正确`);
           this.returnJoin();
         });
+
+        // 连接同步视频socket
+        let socket = this.$socketio
+        let channel = this.$route.query.channelName
+        console.log('socket', socket)
+        this.$socketio.on('my_response', function(msg, cb){
+          console.log('socket_response', msg)
+        })
+        this.$socketio.emit('join', {room: channel})
     },
     initLocalStream() {
       //初始化本地的Stream实例，用于管理本端的音视频流

@@ -8,13 +8,20 @@ require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 import Axios from 'axios'
 import ChatView from "./components/chat/chat.vue";
+import io from './sockets/socketio'
     
 Vue.use(ElementUI)
 Vue.use(VideoPlayer)
 Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false
 
-
+var socket = io('http://localhost:5000/',{
+    cors:{
+        origin: "http://localhost:5000",
+        methods:["GET","POST"]
+    }
+})
+Vue.prototype.$socketio = socket
 
 
 new Vue({
