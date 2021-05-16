@@ -74,6 +74,7 @@ def my_broadcast_event(message):
          {'data': message['data'], 'count': session['receive_count']},
          broadcast=True)
 
+
 # 加入房间
 @socketio.event
 def join(message):
@@ -84,6 +85,7 @@ def join(message):
          {'data': 'In rooms: ' + ', '.join(rooms()),
           'count': session['receive_count']})
 
+
 # 离开房间
 @socketio.event
 def leave(message):
@@ -92,6 +94,7 @@ def leave(message):
     emit('my_response',
          {'data': 'In rooms: ' + ', '.join(rooms()),
           'count': session['receive_count']})
+
 
 # 关闭房间
 @socketio.on('close_room')
@@ -102,6 +105,7 @@ def on_close_room(message):
          to=message['room'])
     close_room(message['room'])
 
+
 # 给房间发送信息
 @socketio.event
 def my_room_event(message):
@@ -110,10 +114,23 @@ def my_room_event(message):
          {'data': message['data'], 'count': session['receive_count']},
          to=message['room'])
 
+
 @socketio.event
 def video_seeking(message):
     emit('seeking_response',
          {'time': message['time'], 'uid':message['uid']}, to=message['room'])
+
+
+@socketio.event
+def video_play(message):
+    emit('play_response',
+         {'uid':message['uid']}, to=message['room'])
+
+
+@socketio.event
+def video_pause(message):
+    emit('pause_response',
+         {'uid':message['uid']}, to=message['room'])
 
 
 @socketio.event

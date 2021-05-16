@@ -81,6 +81,8 @@ export default {
     let channel = this.$route.query.channelName
     let player = this.$refs.videoPlayer.player
     let _this = this
+
+    // 进度条跳转
     socket.on('seeking_response', function(msg, cb){
       if(msg.uid == _this.localUid) return;
       _this.lock = true
@@ -95,6 +97,36 @@ export default {
       console.log('video_seeking', time)
       socket.emit('video_seeking',
       {room: channel, time: time, uid: _this.localUid})
+    })
+
+    // 播放
+    socket.on('play_response', function(msg, cb){
+      if(msg.uid == _this.localUid) return;
+      _this.lock = true
+      player.play()
+      setTimeout(function(){
+        _this.lock = false
+      }, 500)
+    })
+    player.on('play', function(){
+      if(_this.lock) return;
+      socket.emit('video_play',
+      {room: channel, uid: _this.localUid})
+    })
+    // 暂停
+    socket.on('pause_response', function(msg, cb){
+      if(msg.uid == _this.localUid) return;
+      _this.lock = true
+      player.pause()
+      setTimeout(function(){
+        _this.lock = false
+      }, 500)
+    })
+    player.on('pause', function(){
+      if(_this.lock) return;
+      console.log('video_pause')
+      socket.emit('video_pause',
+      {room: channel, uid: _this.localUid})
     })
   },
   watch:{
