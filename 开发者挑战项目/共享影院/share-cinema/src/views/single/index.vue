@@ -73,22 +73,13 @@
             ></el-button>
           </div>
           <div>
-            <ChatView></ChatView>
+            <!--画面div-->
+            <div class="main-window" ref="large"></div>
+            <!--小画面div-->
+            <div class="main-window" ref="small"></div>
           </div>
-          <div class="input-area" ref="small">
-            <div class="grid-content">
-              <el-input
-                type="textarea"
-                :rows="1"
-                placeholder="这电影真好看"
-                v-model="textarea"
-                size="mini"
-              >
-              </el-input>
-            </div>
-            <div class="grid-content">
-              <el-button size="mini" style="height: 30px">发送</el-button>
-            </div>
+          <div>
+            <ChatView :height="300"></ChatView>
           </div>
         </el-aside>
       </el-container>
@@ -500,29 +491,6 @@ body,
       //width: 427px;
       margin: 0 auto;
       //background: #25252d;
-    }
-
-    .input-area {
-      position: absolute;
-      bottom: 0;
-      flex: 0;
-      height: 54px;
-      //background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-
-      .grid-content {
-        border-radius: 4px;
-        min-height: 36px;
-        padding: 10px;
-
-        button {
-        }
-      }
     }
 
     .sub-window {
