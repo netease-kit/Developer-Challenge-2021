@@ -1,6 +1,6 @@
 <template>
-  <div class="chat" v-bind:style="iHeight">
-    <div class="chat-window" v-bind:style="chatHeight">
+  <div class="chat">
+    <div class="chat-window" v-bind:style="height">
       <div class="left">
         <div class="avatar">
           <el-avatar :size="mini" :src="circleUrl"></el-avatar>
@@ -40,49 +40,46 @@
 </template>
 
 <script>
+
 export default {
   name: "ChatView",
   props: {
     height: {
       type: Number,
-      required: true,
-      default: 300,
+      required: false,
+      default: NaN,
     },
   },
   data() {
     return {
       textarea: "",
-      iHeight: {
-        height: this.height + "px",
-      },
-      chatHeight: {
-        height: this.height - 54 + "px",
-      },
     };
-  },
+  }
 };
 </script>
 
 <style scoped lang="less">
 .chat {
   width: 100%;
-  position: relative;
   background: #181824;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   .chat-window {
+    flex: 1;
     width: 100%;
-    height: auto;
     padding: 0;
     //width: 37vw;
     //width: 427px;
     margin: 0 auto;
     //background: #25252d;
-    overflow: hidden scroll;
+    overflow: hidden auto;
 
     .left {
       display: flex;
       padding: 10px;
-      align-items:flex-end;
+      align-items: flex-end;
 
       .avatar {
         height: 100%;
@@ -148,7 +145,7 @@ export default {
       display: flex;
       flex-direction: row-reverse;
       padding: 10px;
-      align-items:flex-end;
+      align-items: flex-end;
 
       .avatar {
         height: 100%;
@@ -228,22 +225,20 @@ export default {
   }
 
   .input-area {
-    position: absolute;
-    bottom: 0;
     flex: 0;
     height: 54px;
     //background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     color: #fff;
 
     .grid-content {
       border-radius: 4px;
       min-height: 36px;
-      padding: 10px;
+      margin: 10px;
 
       button {
       }

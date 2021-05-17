@@ -78,9 +78,7 @@
             <!--小画面div-->
             <div class="main-window" ref="small"></div>
           </div>
-          <div>
-            <ChatView :height="300"></ChatView>
-          </div>
+          <ChatView></ChatView>
         </el-aside>
       </el-container>
     </el-container>
@@ -115,6 +113,7 @@ export default {
       name: "",
       img: "",
       content: "",
+      chatHeight: 0,
     };
   },
   mounted() {
@@ -266,14 +265,14 @@ export default {
           this.returnJoin();
         });
 
-        // 连接同步视频socket
-        let socket = this.$socketio
-        let channel = this.$route.query.channelName
-        console.log('socket', socket)
-        this.$socketio.on('my_response', function(msg, cb){
-          console.log('socket_response', msg)
-        })
-        this.$socketio.emit('join', {room: channel})
+      // 连接同步视频socket
+      let socket = this.$socketio;
+      let channel = this.$route.query.channelName;
+      console.log("socket", socket);
+      this.$socketio.on("my_response", function (msg, cb) {
+        console.log("socket_response", msg);
+      });
+      this.$socketio.emit("join", { room: channel });
     },
     initLocalStream() {
       //初始化本地的Stream实例，用于管理本端的音视频流
@@ -466,6 +465,8 @@ body,
   background-color: #e9eef3;
   color: #333;
   line-height: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .el-main {
@@ -516,7 +517,7 @@ body,
   }
 
   .tab-bar {
-    flex: 0;
+    flex: inherit;
     height: 54px;
     background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
