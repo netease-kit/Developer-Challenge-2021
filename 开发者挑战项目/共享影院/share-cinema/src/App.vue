@@ -7,5 +7,6 @@
 <style lang="less">
 body {
   margin: 0;
+  min-width: 1400px;
 }
 </style>
