@@ -67,7 +67,7 @@ export default {
             fluid: true,
             sources:[{
             type: "video/mp4",
-            src: "http://jdvodyrzl0a5b.vod.126.net/jdvodyrzl0a5b/aee868a4-e082-40e1-ba47-78d43a99bb9d.mp4"
+            src: ""
             }],
             techOrder: ['html5', 'flash'],
             width: document.documentElement.clientWidth
@@ -81,7 +81,7 @@ export default {
     let channel = this.$route.query.channelName
     let player = this.$refs.videoPlayer.player
     let _this = this
-
+    console.log("why not?",socket,player,this.lock)
     // 进度条跳转
     socket.on('seeking_response', function(msg, cb){
       if(msg.uid == _this.localUid) return;

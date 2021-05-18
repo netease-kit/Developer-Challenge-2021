@@ -24,6 +24,8 @@ socketio = SocketIO(app, async_mode=async_mode, cors_allowed_origins='*',
 thread = None
 thread_lock = Lock()
 
+video_id = {}
+
 @app.after_request
 def cors(environ):
     environ.headers['Access-Control-Allow-Origin'] = 'https://localhost:8020'
@@ -79,11 +81,18 @@ def my_broadcast_event(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    print('join', message['room'])
-    emit('my_response',
-         {'data': 'In rooms: ' + ', '.join(rooms()),
-          'count': session['receive_count']})
+    print(message)
+    print('id' in message)
+    if 'id' in message:
+        video_id[message['room']] = message['id']
+        emit('my_response',
+             {'data': 'In rooms: ' + ', '.join(rooms())})
+    elif message['room'] in video_id:
+        emit('id_response',
+             {'err':1, 'id':video_id[message['room']]})
+    else:
+        emit('id_response',
+             {'err':0})
 
 
 # 离开房间

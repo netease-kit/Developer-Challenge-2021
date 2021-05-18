@@ -249,14 +249,7 @@ export default {
           this.returnJoin();
         });
 
-      // 连接同步视频socket
-      let socket = this.$socketio;
-      let channel = this.$route.query.channelName;
-      console.log("socket", socket);
-      this.$socketio.on("my_response", function (msg, cb) {
-        console.log("socket_response", msg);
-      });
-      this.$socketio.emit("join", { room: channel });
+
     },
     initLocalStream() {
       //初始化本地的Stream实例，用于管理本端的音视频流

@@ -8,7 +8,7 @@
       </div>
       <div>
         <el-input v-model="channelName" placeholder="请输入房间号">
-          <el-button slot="append" icon="el-icon-search">确定</el-button>
+          <el-button slot="append" icon="el-icon-search" @click="joinVideoRoom(channelName)">确定</el-button>
         </el-input>
       </div>
     </el-header>
@@ -66,6 +66,7 @@
 
 <script>
 import axios from "axios";
+import { message } from "../../components/message";
 
 export default {
   name: "main",
@@ -82,19 +83,43 @@ export default {
       .then((res) => {
         this.containerData = res.data;
         this.carouselData = res.data.ad_list;
-        console.log(this.videoData);
       })
       .catch((err) => console.log(err));
   },
   methods: {
     createVideoPage(id) {
       let channelName = Math.random().toFixed(5).slice(-5);
+      // 连接同步视频socket
+      let socket = this.$socketio;
+      this.$socketio.on("my_response", function (msg, cb) {
+        console.log("socket_response", msg);
+      });
+      this.$socketio.emit("join", { room: channelName, id: id});
       const { path = "single" } = this.$route.query;
       this.$router.push({
         path: `/${path}`,
         query: { channelName, id },
       });
     },
+    joinVideoRoom(channelName){
+      console.log(channelName)
+      let socket = this.$socketio;
+      let that = this
+      this.$socketio.on("id_response", function (msg, cb) {
+        console.log("id_response", msg);
+        if(msg.err==1){
+          const {path="single"}=that.$route.query;
+          let id = msg.id
+          that.$router.push({
+            path:  `/${path}`,
+            query:{ channelName, id},
+          })
+        }else{
+          message('当前无该房间！')
+        }
+      });
+      this.$socketio.emit("join", { room: channelName});
+    }
   },
 };
 </script>
