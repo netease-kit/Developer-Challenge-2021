@@ -16,8 +16,20 @@
         </el-carousel>
       </div>
       <div class="container">
-        <div v-for="item in containerData" :key="item.id" class="content">
-          <div>
+        <div v-for="item in containerData.movie_list" :key="item.id" class="content">
+          <div @click="createVideoPage(item.id)">
+            <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
+              <div slot="placeholder" class="image-slot">
+                加载中<span class="dot">...</span>
+              </div></el-image
+            >
+            <div>{{ item.name }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div v-for="item in containerData.game_list" :key="item.id" class="content">
+          <div @click="createVideoPage(item.id)">
             <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
               <div slot="placeholder" class="image-slot">
                 加载中<span class="dot">...</span>
@@ -46,12 +58,22 @@ export default {
     axios
       .get("http://127.0.0.1:5000/video_list", {})
       .then((res) => {
-        this.containerData = res.data.video_list;
-        this.carouselData = res.data.video_list;
+        this.containerData = res.data;
+        this.carouselData = res.data.ad_list;
         console.log(this.videoData);
       })
       .catch((err) => console.log(err));
   },
+  methods:{
+    createVideoPage(id) {
+      let channelName = Math.random().toFixed(5).slice(-5)
+      const { path = 'single' } = this.$route.query
+                this.$router.push({
+                    path: `/${path}`,
+                    query: { channelName , id}
+                })
+    },
+  }
 };
 </script>
 
@@ -63,7 +85,7 @@ export default {
 }
 .carousel {
   display: block;
-  width: 80%;
+  width: 1200px;
 
   .el-carousel__item h3 {
     color: #475669;
