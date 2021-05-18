@@ -3,10 +3,10 @@
     <el-container style="height: 100%" direction="vertical">
       <el-header>
         <el-col :span="4">
-          <div @click="videoNow = false">
+          <div>
             <el-breadcrumb separator="/">
               <el-breadcrumb-item>首页</el-breadcrumb-item>
-              <el-breadcrumb-item v-show="videoNow">一起看</el-breadcrumb-item>
+              <el-breadcrumb-item>一起看</el-breadcrumb-item>
             </el-breadcrumb>
           </div>
         </el-col>
@@ -15,23 +15,7 @@
       </el-header>
       <el-container>
         <el-main>
-          <div v-if="!videoNow" class="hor1">
-            <div v-for="item in videoData" :key="item.id">
-              <div
-                style="margin-right: 20px; text-align: center; cursor: pointer"
-                @click="createVideoPage(item.id)"
-              >
-                <el-image
-                  style="width: 240px; height: 135px"
-                  fit="fit"
-                  :src="'http://127.0.0.1:5000/' + item.image"
-                ></el-image>
-                <div>{{ item.name }}</div>
-              </div>
-            </div>
-          </div>
           <VideoPage
-            v-else
             :src="src"
             :description="description"
             :name="name"
@@ -106,7 +90,6 @@ export default {
       localStream: null,
       remoteStream: null,
       videoData: [],
-      videoNow: false,
       src: "",
       description: "",
       type: [],
@@ -118,17 +101,19 @@ export default {
   },
   mounted() {
     // 获取后台数据
+    window.self = this;
     axios
       .get("http://127.0.0.1:5000/video_list", {})
       .then((res) => {
-        this.videoData = res.data.video_list;
-        console.log(this.videoData);
+        this.videoData = res.data.game_list.concat(res.data.movie_list);
+        console.log("videoData", this.videoData);
+        this.createVideoPage(this.$route.query.id)
       })
       .catch((err) => console.log(err));
 
     // 初始化音视频实例
     console.warn("初始化音视频sdk");
-    window.self = this;
+
     this.client = WebRTC2.createClient({
       appkey: config.appkey,
       debug: true,
@@ -211,7 +196,6 @@ export default {
   },
   methods: {
     createVideoPage(id) {
-      this.videoNow = true;
       console.log(id);
       console.log(this.videoData[id - 1]);
       this.src = this.videoData[id - 1].url;
