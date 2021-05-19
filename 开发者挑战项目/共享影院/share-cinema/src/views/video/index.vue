@@ -1,24 +1,25 @@
 <template>
   <div>
+        <div>房间号：{{$route.query.channelName}}</div>
         <video-player
             class="video-player vjs-custom-skin"
             ref="videoPlayer"
             :playsinline="true"
             :options="playerOptions"
           ></video-player>
-          <div style="font-size: 25px">{{name}}</div>
+          <div style="font-size: 25px">{{content.name}}</div>
           <div class="hor">
-            <div style="margin-right: 10px;">{{description}}   </div>
-            <el-tag v-for="t in type" :key="t" type="info">{{t}}</el-tag>
+            <div style="margin-right: 10px;">{{content.info}}   </div>
+            <el-tag v-for="t in content.type" :key="t" type="info">{{t}}</el-tag>
           </div>
           <div class="hor">
              <el-image
-                :src="'http://127.0.0.1:5000/'+image"
+                :src="'http://127.0.0.1:5000/'+content.image"
                 style="width:240px;height:135px"
                 fit="fit"
                 ></el-image>
              <div style="width:60% ;margin-left: 10px">
-               {{content}}
+               {{content.content}}
              </div>
           </div>
   </div>
@@ -34,26 +35,10 @@ export default {
       type: String,
       required: true
     },
-    type:{
-      type: Array,
-      required: true
-    },
-    description:{
-      type: String,
-      required: true
-    },
-    name:{
-      type: String,
-      required: true
-    },
-    image:{
-      type: String,
-      required: true
-    },
     content:{
-      type: String,
+      type: Object,
       required: true
-    }
+    },
   },
   data(){
       return{

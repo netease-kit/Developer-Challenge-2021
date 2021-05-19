@@ -26,7 +26,7 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-      <div class="title">电影</div>
+      <div class="title">热门影视</div>
       <div class="container">
         <div
           v-for="item in containerData.movie_list"
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="title">游戏</div>
+      <div class="title">网易游戏</div>
       <div class="container">
         <div
           v-for="item in containerData.game_list"
@@ -135,7 +135,6 @@ export default {
     margin: 0 10px 0 10px;
   }
 }
-
 .el-main {
   display: flex;
   align-items: center;

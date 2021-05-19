@@ -16,11 +16,8 @@
       <el-container>
         <el-main>
           <VideoPage
+            v-if="videoNow"
             :src="src"
-            :description="description"
-            :name="name"
-            :image="img"
-            :type="type"
             :content="content"
           ></VideoPage>
         </el-main>
@@ -97,9 +94,16 @@ export default {
       img: "",
       content: "",
       chatHeight: 0,
+      videoNow: false,
     };
   },
   mounted() {
+    // 这段不能删
+    let that = this;
+    setTimeout(function(){
+      that.videoNow = true;
+    }, 500);
+
     // 获取后台数据
     window.self = this;
     axios
@@ -198,12 +202,8 @@ export default {
     createVideoPage(id) {
       console.log(id);
       console.log(this.videoData[id - 1]);
-      this.src = this.videoData[id - 1].url;
-      this.description = this.videoData[id - 1].info;
-      this.type = this.videoData[id - 1].type;
-      this.name = this.videoData[id - 1].name;
-      this.img = this.videoData[id - 1].image;
-      this.content = this.videoData[id - 1].content;
+      this.src = this.videoData[id - 1].url
+      this.content = this.videoData[id - 1]
     },
     getToken() {
       return getToken({
