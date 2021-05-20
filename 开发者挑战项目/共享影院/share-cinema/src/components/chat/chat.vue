@@ -3,28 +3,28 @@
     <div class="chat-window" v-bind:style="height">
       <div class="chat-text left">
         <div class="avatar">
-          <el-avatar :size="mini" :src="circleUrl"></el-avatar>
+          <el-avatar :size="mini" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
         </div>
         <div class="aside">
           <div class="label">乱武 2021年5月14日14:52:25</div>
-          <div class="text"><p>嘿嘿哈哈或或或</p></div>
+          <div class="text"><p>Hi，这是我的共享影院，一起来看剧吧！</p></div>
         </div>
       </div>
 
-      <div class="chat-text right">
+      <div v-show="sentence" class="chat-text right">
         <div class="avatar">
-          <el-avatar :size="mini" :src="circleUrl"></el-avatar>
+          <el-avatar :size="mini" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
         </div>
         <div class="aside">
-          <div class="label">乱武 2021年5月14日14:52:25</div>
-          <div class="text"><p>嘿嘿哈哈或或或</p></div>
+          <div class="label">我 2021年5月14日14:55:40</div>
+          <div class="text"><p>真是太棒了！</p></div>
         </div>
       </div>
     </div>
     <div class="input-area">
       <div class="grid-content">
-        <el-input v-model="textarea" placeholder="这电影真好看">
-          <el-button slot="append" icon="el-icon-check">发送</el-button>
+        <el-input v-model="textarea" placeholder="真是太棒了！">
+          <el-button slot="append" icon="el-icon-check" @click="createSentence()">发送</el-button>
         </el-input>
       </div>
     </div>
@@ -44,8 +44,14 @@ export default {
   data() {
     return {
       textarea: "",
+      sentence: false,
     };
   },
+  methods:{
+    createSentence(){
+      this.sentence = true;
+    }
+  }
 };
 </script>
 
@@ -93,7 +99,7 @@ export default {
           min-height: 50px;
           p {
             position: relative;
-            background: #25a23b;
+            background: #3582e7;
             border-radius: 8px;
             width: fit-content;
             margin-left: 10px;
@@ -131,7 +137,7 @@ export default {
         .text {
           p::before {
             left: -10px;
-            border-left: 20px solid #25a23b;
+            border-left: 20px solid #3582e7;
             border-bottom-right-radius: 18px;
           }
           p::after {
@@ -163,7 +169,7 @@ export default {
           }
           p::before {
             right: -10px;
-            border-right: 20px solid #25a23b;
+            border-right: 20px solid #3582e7;
             border-bottom-left-radius: 18px;
           }
           p::after {

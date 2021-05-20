@@ -148,7 +148,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 20px;
-  background: #1d2b40;
+  background: #c5daeb;
 
   div {
     margin: 0 10px 0 10px;

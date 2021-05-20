@@ -33,7 +33,7 @@
               }}</el-tag>
             </div>
             <div  style="margin-bottom: 10px; margin-top: 5px">
-              <div style="margin-right: 10px; font-size: 14px">
+              <div style="margin-right: 10px; font-size: 14px; font-weight: bold; margin-bottom: 5px">
                 {{ content.info }}
               </div>
 
@@ -237,6 +237,7 @@ export default {
       console.log(this.videoData[id - 1]);
       this.src = this.videoData[id - 1].url;
       this.content = this.videoData[id - 1];
+      console.log('1231123', this.src)
     },
     getToken() {
       return getToken({
@@ -449,7 +450,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 20px;
-  background: #1d2b40;
+  background: #c5daeb;
 
   div {
     margin: 0 10px 0 10px;
