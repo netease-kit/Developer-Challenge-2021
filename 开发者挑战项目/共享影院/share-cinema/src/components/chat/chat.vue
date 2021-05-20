@@ -23,24 +23,15 @@
     </div>
     <div class="input-area">
       <div class="grid-content">
-        <el-input
-          type="textarea"
-          :rows="1"
-          placeholder="这电影真好看"
-          v-model="textarea"
-          size="mini"
-        >
+        <el-input v-model="textarea" placeholder="这电影真好看">
+          <el-button slot="append" icon="el-icon-check">发送</el-button>
         </el-input>
-      </div>
-      <div class="grid-content">
-        <el-button size="mini" style="height: 30px">发送</el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "ChatView",
   props: {
@@ -54,7 +45,7 @@ export default {
     return {
       textarea: "",
     };
-  }
+  },
 };
 </script>
 

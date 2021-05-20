@@ -1,27 +1,78 @@
 <template>
-  <div class="wrapper">
-    <el-container style="height: 100%" direction="vertical">
-      <el-header>
-        <el-col :span="4">
-          <div>
-            <el-breadcrumb separator="/">
-              <el-breadcrumb-item>首页</el-breadcrumb-item>
-              <el-breadcrumb-item>一起看</el-breadcrumb-item>
-            </el-breadcrumb>
+  <el-container style="height: 100%" direction="vertical">
+    <el-header>
+      <div>
+        <el-avatar
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        ></el-avatar>
+      </div>
+      <div>
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item
+            >房间 {{ $route.query.channelName }}</el-breadcrumb-item
+          >
+        </el-breadcrumb>
+      </div>
+    </el-header>
+    <el-container>
+      <el-main>
+        <div class="video_chat">
+          <div class="video">
+            <VideoPage
+              v-if="videoNow"
+              :src="src"
+              :content="content"
+            ></VideoPage>
           </div>
-        </el-col>
-        <el-col :span="16"></el-col>
-        <el-col :span="4"></el-col>
-      </el-header>
-      <el-container>
-        <el-main>
-          <VideoPage
-            v-if="videoNow"
-            :src="src"
-            :content="content"
-          ></VideoPage>
-        </el-main>
-        <el-aside class="content">
+          <div class="intro">
+            <div
+              style="
+                font-size: 25px;
+                height: 35px;
+                line-height: 35px;
+                margin: 0 0 10px 0;
+              "
+            >
+              <b>{{ content.name }}</b>
+              <div style="display: inline-block; margin: 0 0 0 20px">
+                <el-tag v-for="t in content.type" :key="t" type="info">{{
+                  t
+                }}</el-tag>
+              </div>
+            </div>
+            <div class="hor">
+              <div style="margin-right: 10px">{{ content.info }}</div>
+
+              <el-popover
+                placement="top-start"
+                width="800"
+                v-model="popover_visible"
+              >
+                <div class="hor">
+                  <el-image
+                    :src="'http://127.0.0.1:5000/' + content.image"
+                    style="width: 240px; height: 135px"
+                    fit="fit"
+                  ></el-image>
+                  <div style="flex: 1; margin-left: 10px">
+                    {{ content.content }}
+                  </div>
+                </div>
+                <el-button type="text" slot="reference"
+                  >内容简介<i
+                    class="el-icon--right"
+                    :class="{
+                      'el-icon-arrow-up': !popover_visible,
+                      'el-icon-arrow-down': popover_visible,
+                    }"
+                  ></i
+                ></el-button>
+              </el-popover>
+            </div>
+          </div>
+        </div>
+        <div class="content">
           <div class="tab-bar">
             <el-button
               type="info"
@@ -53,17 +104,17 @@
               @click="stopOrOpenVideo"
             ></el-button>
           </div>
-          <div>
+          <div class="videochat-window">
             <!--画面div-->
-            <div class="main-window" ref="large"></div>
+            <div class="main-window" v-show="large_window" ref="large"></div>
             <!--小画面div-->
-            <div class="main-window" ref="small"></div>
+            <div class="main-window" v-show="small_window" ref="small"></div>
           </div>
           <ChatView></ChatView>
-        </el-aside>
-      </el-container>
+        </div>
+      </el-main>
     </el-container>
-  </div>
+  </el-container>
 </template>
 <script>
 import { message } from "../../components/message";
@@ -95,12 +146,15 @@ export default {
       content: "",
       chatHeight: 0,
       videoNow: false,
+      popover_visible: false,
+      large_window: false,
+      small_window: false,
     };
   },
   mounted() {
     // 这段不能删
     let that = this;
-    setTimeout(function(){
+    setTimeout(function () {
       that.videoNow = true;
     }, 500);
 
@@ -111,7 +165,7 @@ export default {
       .then((res) => {
         this.videoData = res.data.game_list.concat(res.data.movie_list);
         console.log("videoData", this.videoData);
-        this.createVideoPage(this.$route.query.id)
+        this.createVideoPage(this.$route.query.id);
       })
       .catch((err) => console.log(err));
 
@@ -165,6 +219,7 @@ export default {
       //用于播放对方视频画面的div节点
       this.isDesc = false;
       const div = this.$refs.small;
+      const that = this;
       remoteStream
         .play(div)
         .then(() => {
@@ -175,6 +230,7 @@ export default {
             height: (div.clientWidth / 16) * 9,
             cut: false, // 是否裁剪
           });
+          that.small_window = true;
         })
         .catch((err) => {
           console.warn("播放对方视频失败了: ", err);
@@ -202,8 +258,8 @@ export default {
     createVideoPage(id) {
       console.log(id);
       console.log(this.videoData[id - 1]);
-      this.src = this.videoData[id - 1].url
-      this.content = this.videoData[id - 1]
+      this.src = this.videoData[id - 1].url;
+      this.content = this.videoData[id - 1];
     },
     getToken() {
       return getToken({
@@ -248,8 +304,6 @@ export default {
           message(`${error}: 请检查appkey或者token是否正确`);
           this.returnJoin();
         });
-
-
     },
     initLocalStream() {
       //初始化本地的Stream实例，用于管理本端的音视频流
@@ -363,6 +417,7 @@ export default {
           })
           .then(() => {
             console.warn("关闭摄像头 sucess");
+            this.large_window = false;
           })
           .catch((err) => {
             console.warn("关闭摄像头失败: ", err);
@@ -388,6 +443,7 @@ export default {
               height: (div.clientWidth / 16) * 9,
               cut: false, // 是否裁剪
             });
+            this.large_window = true;
           })
           .catch((err) => {
             console.warn("打开摄像头失败: ", err);
@@ -405,10 +461,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-html,
-body,
-.el-container,
-.homeBox {
+.el-container {
   /*设置内部填充为0，几个布局元素之间没有间距*/
   padding: 0px;
   /*外部间距也是如此设置*/
@@ -416,26 +469,16 @@ body,
   /*统一设置高度为100%*/
   height: 100%;
 }
-.el-header,
-.el-footer {
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-  align-content: center;
-  display: flex;
-  align-items: center;
-}
-.hor {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 
-.hor1 {
-  flex-wrap: wrap;
+.el-header {
   display: flex;
   align-items: center;
+  padding: 0 20px;
+  background: #1d2b40;
+
+  div {
+    margin: 0 10px 0 10px;
+  }
 }
 
 .el-aside {
@@ -447,155 +490,157 @@ body,
 }
 
 .el-main {
-  background-color: #e9eef3;
-  color: #333;
-  line-height: 30px;
-}
-.wrapper {
-  height: 100vh;
-  background-image: linear-gradient(179deg, #141417 0%, #181824 100%);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #f2f5f6;
 
   .content {
-    width: 28%;
-    position: relative;
+    width: 20%;
+    margin: 0 20px 0 20px;
     background: #181824;
-
-    .main-window {
-      width: 100%;
-      height: auto;
-      //width: 37vw;
-      //width: 427px;
-      margin: 0 auto;
-      //background: #25252d;
-    }
-
-    .sub-window {
-      width: 165px;
-      height: 95px;
-      background: #25252d;
-      position: absolute;
-      z-index: 9;
-      right: 16px;
-      top: 16px;
-      border: 1px solid #ffffff;
-
-      .loading-text {
-        display: block;
-        width: 100%;
-        text-align: center;
-        line-height: 90px;
-        font-size: 12px;
-        color: #fff;
-        font-weight: 400;
-      }
-    }
-  }
-
-  .tab-bar {
-    flex: inherit;
-    height: 54px;
-    background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
-    list-style: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    flex-direction: column;
+  }
+}
 
-    li {
-      height: 54px;
-      width: 125px;
-      cursor: pointer;
-      //静音
-      &.silence {
-        background: url("../../assets/img/icon/silence.png") no-repeat center;
+.videochat-window {
+  display: flex;
+  flex-direction: row;
+
+  .main-window {
+    flex: 1;
+    flex-grow: 1;
+    //width: 37vw;
+    //width: 427px;
+    margin: 0 auto;
+    //background: #25252d;
+  }
+}
+
+.video_chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+
+  .video {
+  }
+}
+.intro {
+  padding: 10px;
+  background: white;
+  border-width: 2px;
+  border-radius: 4px;
+  //width: 80%;
+}
+
+.hor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.popper-info {
+}
+
+.tab-bar {
+  flex: inherit;
+  height: 54px;
+  background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+  li {
+    height: 54px;
+    width: 125px;
+    cursor: pointer;
+    //静音
+    &.silence {
+      background: url("../../assets/img/icon/silence.png") no-repeat center;
+      background-size: 60px 54px;
+
+      &:hover {
+        background: url("../../assets/img/icon/silence-hover.png") no-repeat
+          center;
+        background-size: 60px 54px;
+      }
+
+      &:active {
+        background: url("../../assets/img/icon/silence-click.png") no-repeat
+          center;
+        background-size: 60px 54px;
+      }
+
+      &.isSilence {
+        //已经开启静音
+        background: url("../../assets/img/icon/relieve-silence.png") no-repeat
+          center;
         background-size: 60px 54px;
 
         &:hover {
-          background: url("../../assets/img/icon/silence-hover.png") no-repeat
-            center;
+          background: url("../../assets/img/icon/relieve-silence-hover.png")
+            no-repeat center;
           background-size: 60px 54px;
         }
 
         &:active {
-          background: url("../../assets/img/icon/silence-click.png") no-repeat
-            center;
+          background: url("../../assets/img/icon/relieve-silence-click.png")
+            no-repeat center;
           background-size: 60px 54px;
-        }
-
-        &.isSilence {
-          //已经开启静音
-          background: url("../../assets/img/icon/relieve-silence.png") no-repeat
-            center;
-          background-size: 60px 54px;
-
-          &:hover {
-            background: url("../../assets/img/icon/relieve-silence-hover.png")
-              no-repeat center;
-            background-size: 60px 54px;
-          }
-
-          &:active {
-            background: url("../../assets/img/icon/relieve-silence-click.png")
-              no-repeat center;
-            background-size: 60px 54px;
-          }
         }
       }
+    }
 
-      //结束按钮
-      &.over {
-        background: url("../../assets/img/icon/over.png") no-repeat center;
+    //结束按钮
+    &.over {
+      background: url("../../assets/img/icon/over.png") no-repeat center;
+      background-size: 68px 36px;
+
+      &:hover {
+        background: url("../../assets/img/icon/over-hover.png") no-repeat center;
         background-size: 68px 36px;
-
-        &:hover {
-          background: url("../../assets/img/icon/over-hover.png") no-repeat
-            center;
-          background-size: 68px 36px;
-        }
-
-        &:active {
-          background: url("../../assets/img/icon/over-click.png") no-repeat
-            center;
-          background-size: 68px 36px;
-        }
       }
 
-      // 停止按钮
-      &.stop {
-        background: url("../../assets/img/icon/stop.png") no-repeat center;
+      &:active {
+        background: url("../../assets/img/icon/over-click.png") no-repeat center;
+        background-size: 68px 36px;
+      }
+    }
+
+    // 停止按钮
+    &.stop {
+      background: url("../../assets/img/icon/stop.png") no-repeat center;
+      background-size: 60px 54px;
+
+      &:hover {
+        background: url("../../assets/img/icon/stop-hover.png") no-repeat center;
+        background-size: 60px 54px;
+      }
+
+      &:active {
+        background: url("../../assets/img/icon/stop-click.png") no-repeat center;
+        background-size: 60px 54px;
+      }
+
+      //已经是停止状态
+      &.isStop {
+        background: url("../../assets/img/icon/open.png") no-repeat center;
         background-size: 60px 54px;
 
         &:hover {
-          background: url("../../assets/img/icon/stop-hover.png") no-repeat
+          background: url("../../assets/img/icon/open-hover.png") no-repeat
             center;
           background-size: 60px 54px;
         }
 
         &:active {
-          background: url("../../assets/img/icon/stop-click.png") no-repeat
+          background: url("../../assets/img/icon/open-click.png") no-repeat
             center;
           background-size: 60px 54px;
-        }
-
-        //已经是停止状态
-        &.isStop {
-          background: url("../../assets/img/icon/open.png") no-repeat center;
-          background-size: 60px 54px;
-
-          &:hover {
-            background: url("../../assets/img/icon/open-hover.png") no-repeat
-              center;
-            background-size: 60px 54px;
-          }
-
-          &:active {
-            background: url("../../assets/img/icon/open-click.png") no-repeat
-              center;
-            background-size: 60px 54px;
-          }
         }
       }
     }
