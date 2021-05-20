@@ -538,7 +538,7 @@ export default {
 .tab-bar {
   flex: inherit;
   height: 54px;
-  background-image: linear-gradient(180deg, #292933 7%, #212129 100%);
+  background-color: #c9dee4;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
   list-style: none;
   display: flex;

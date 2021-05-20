@@ -3,7 +3,10 @@
     <div class="chat-window" v-bind:style="height">
       <div class="chat-text left">
         <div class="avatar">
-          <el-avatar :size="mini" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          <el-avatar
+            :size="mini"
+            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+          ></el-avatar>
         </div>
         <div class="aside">
           <div class="label">乱武 2021年5月14日14:52:25</div>
@@ -13,7 +16,10 @@
 
       <div v-show="sentence" class="chat-text right">
         <div class="avatar">
-          <el-avatar :size="mini" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          <el-avatar
+            :size="mini"
+            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+          ></el-avatar>
         </div>
         <div class="aside">
           <div class="label">我 2021年5月14日14:55:40</div>
@@ -24,7 +30,12 @@
     <div class="input-area">
       <div class="grid-content">
         <el-input v-model="textarea" placeholder="真是太棒了！">
-          <el-button slot="append" icon="el-icon-check" @click="createSentence()">发送</el-button>
+          <el-button
+            slot="append"
+            icon="el-icon-check"
+            @click="createSentence()"
+            >发送</el-button
+          >
         </el-input>
       </div>
     </div>
@@ -47,11 +58,11 @@ export default {
       sentence: false,
     };
   },
-  methods:{
-    createSentence(){
+  methods: {
+    createSentence() {
       this.sentence = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -102,7 +113,7 @@ export default {
             background: #3582e7;
             border-radius: 8px;
             width: fit-content;
-            margin-left: 10px;
+            margin: 5px 10px 5px 10px;
             word-break: break-word;
             color: white;
             padding: 5px 10px 5px 10px;
