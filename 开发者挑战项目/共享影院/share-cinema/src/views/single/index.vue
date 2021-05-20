@@ -26,23 +26,16 @@
             ></VideoPage>
           </div>
           <div class="intro">
-            <div
-              style="
-                font-size: 25px;
-                height: 35px;
-                line-height: 35px;
-                margin: 0 0 10px 0;
-              "
-            >
+            <div class="title">
               <b>{{ content.name }}</b>
-              <div style="display: inline-block; margin: 0 0 0 20px">
-                <el-tag v-for="t in content.type" :key="t" type="info">{{
-                  t
-                }}</el-tag>
-              </div>
+              <el-tag v-for="t in content.type" :key="t" type="info">{{
+                t
+              }}</el-tag>
             </div>
-            <div class="hor">
-              <div style="margin-right: 10px">{{ content.info }}</div>
+            <div class="hor" style="margin-bottom: 10px; margin-top: 5px">
+              <div style="margin-right: 10px; font-size: 14px">
+                {{ content.info }}
+              </div>
 
               <el-popover
                 placement="top-start"
@@ -211,6 +204,7 @@ export default {
       var remoteStream = evt.stream;
       console.warn("对方停止订阅: ", remoteStream.getId());
       remoteStream.stop();
+      this.small_window = false;
     });
 
     this.client.on("stream-subscribed", (evt) => {
@@ -483,7 +477,7 @@ export default {
 
 .el-aside {
   background-color: #e9eef3;
-  color: #333;
+  color: white;
   line-height: 30px;
   display: flex;
   flex-direction: column;
@@ -498,7 +492,9 @@ export default {
   .content {
     width: 20%;
     margin: 0 20px 0 20px;
-    background: #181824;
+    background: #f2f5f6;
+    border: solid gainsboro 1px;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
   }
@@ -533,14 +529,28 @@ export default {
   border-width: 2px;
   border-radius: 4px;
   //width: 80%;
+
+  .title {
+    b {
+      font-size: 25px;
+      margin-right: 10px;
+    }
+    .el-tag {
+      border: none;
+      background-color: white;
+    }
+  }
 }
 
 .hor {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-.popper-info {
+
+  .el-button {
+    padding: 0;
+    line-height: unset;
+  }
 }
 
 .tab-bar {

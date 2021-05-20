@@ -1,7 +1,7 @@
 <template>
   <div class="chat">
     <div class="chat-window" v-bind:style="height">
-      <div class="left">
+      <div class="chat-text left">
         <div class="avatar">
           <el-avatar :size="mini" :src="circleUrl"></el-avatar>
         </div>
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="right">
+      <div class="chat-text right">
         <div class="avatar">
           <el-avatar :size="mini" :src="circleUrl"></el-avatar>
         </div>
@@ -52,7 +52,6 @@ export default {
 <style scoped lang="less">
 .chat {
   width: 100%;
-  background: #181824;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -67,20 +66,18 @@ export default {
     //background: #25252d;
     overflow: hidden auto;
 
-    .left {
+    .chat-text {
       display: flex;
       padding: 10px;
       align-items: flex-end;
 
       .avatar {
         height: 100%;
-        width: 20%;
         text-align: justify;
         //padding-right: 10px;
       }
 
       .aside {
-        width: 80%;
         display: inline-flex;
         flex-direction: column;
 
@@ -88,7 +85,7 @@ export default {
           width: 100%;
           height: 20px;
           font-size: 8px;
-          color: #00ff00;
+          color: gray;
         }
 
         .text {
@@ -102,7 +99,7 @@ export default {
             margin-left: 10px;
             word-break: break-word;
             color: white;
-            padding: 5px;
+            padding: 5px 10px 5px 10px;
             line-height: 18px;
             z-index: 0;
           }
@@ -110,104 +107,68 @@ export default {
             content: "";
             position: absolute;
             bottom: -2px;
-            left: -10px;
             width: 0px;
             height: 20px;
             z-index: -1;
-            border-left: 20px solid #25a23b;
-            border-bottom-right-radius: 18px;
           }
           p::after {
             content: "";
             position: absolute;
             bottom: -2px;
-            left: -20px;
             width: 0px;
             height: 20px;
             z-index: 1;
-            border-left: 20px solid #181824;
+          }
+        }
+      }
+    }
+
+    .chat-text.left {
+      .avatar {
+        padding-right: 10px;
+      }
+      .aside {
+        .text {
+          p::before {
+            left: -10px;
+            border-left: 20px solid #25a23b;
+            border-bottom-right-radius: 18px;
+          }
+          p::after {
+            left: -20px;
+            border-left: 20px solid #f2f5f6;
             border-bottom-right-radius: 18px;
           }
         }
       }
     }
 
-    .right {
-      display: flex;
+    .chat-text.right {
       flex-direction: row-reverse;
-      padding: 10px;
-      align-items: flex-end;
 
       .avatar {
-        height: 100%;
-        width: 20%;
-        text-align: justify;
-        padding-left: 20px;
+        padding-left: 2px;
       }
 
       .aside {
-        width: 80%;
-        display: inline-flex;
-        flex-direction: column;
-
         .label {
-          width: 100%;
-          height: 20px;
-          font-size: 8px;
-          color: #00ff00;
           text-align: right;
         }
 
         .text {
-          width: 100%;
-          min-height: 50px;
           text-align: right;
 
           p {
-            position: relative;
-            background: #25a23b;
-            border-radius: 8px;
-            width: auto;
-            margin-left: 10px;
-            word-break: break-word;
-            color: white;
-            padding: 5px;
-            line-height: 18px;
-            display: inline-block;
             text-align: left;
-            z-index: 0;
           }
-          // p::after {
-          //   content: "";
-          //   display: block;
-          //   position: absolute;
-          //   width: 0;
-          //   height: 0;
-          //   border: 8px solid transparent;
-          //   border-left-color: #25a23b;
-          //   top: 6px;
-          //   right: -14px;
-          // }
           p::before {
-            content: "";
-            position: absolute;
-            bottom: -2px;
             right: -10px;
-            width: 0px;
-            height: 20px;
-            z-index: -1;
             border-right: 20px solid #25a23b;
             border-bottom-left-radius: 18px;
           }
           p::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
             right: -20px;
-            width: 0px;
-            height: 20px;
-            z-index: 1;
-            border-right: 20px solid #181824;
+            border-right: 20px solid #f2f5f6;
             border-bottom-left-radius: 18px;
           }
         }
@@ -229,10 +190,7 @@ export default {
     .grid-content {
       border-radius: 4px;
       min-height: 36px;
-      margin: 10px;
-
-      button {
-      }
+      width: 100%;
     }
   }
 }
