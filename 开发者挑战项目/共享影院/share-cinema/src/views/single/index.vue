@@ -32,16 +32,12 @@
                 t
               }}</el-tag>
             </div>
-            <div class="hor" style="margin-bottom: 10px; margin-top: 5px">
+            <div  style="margin-bottom: 10px; margin-top: 5px">
               <div style="margin-right: 10px; font-size: 14px">
                 {{ content.info }}
               </div>
 
-              <el-popover
-                placement="top-start"
-                width="800"
-                v-model="popover_visible"
-              >
+
                 <div class="hor">
                   <el-image
                     :src="'http://127.0.0.1:5000/' + content.image"
@@ -52,16 +48,7 @@
                     {{ content.content }}
                   </div>
                 </div>
-                <el-button type="text" slot="reference"
-                  >内容简介<i
-                    class="el-icon--right"
-                    :class="{
-                      'el-icon-arrow-up': !popover_visible,
-                      'el-icon-arrow-down': popover_visible,
-                    }"
-                  ></i
-                ></el-button>
-              </el-popover>
+                
             </div>
           </div>
         </div>
@@ -97,11 +84,11 @@
               @click="stopOrOpenVideo"
             ></el-button>
           </div>
-          <div class="videochat-window">
+          <div >
             <!--画面div-->
-            <div class="main-window" v-show="large_window" ref="large"></div>
+            <div class="main-window"  ref="large"></div>
             <!--小画面div-->
-            <div class="main-window" v-show="small_window" ref="small"></div>
+            <div class="main-window"  ref="small"></div>
           </div>
           <ChatView></ChatView>
         </div>
@@ -140,8 +127,6 @@ export default {
       chatHeight: 0,
       videoNow: false,
       popover_visible: false,
-      large_window: false,
-      small_window: false,
     };
   },
   mounted() {
@@ -204,7 +189,6 @@ export default {
       var remoteStream = evt.stream;
       console.warn("对方停止订阅: ", remoteStream.getId());
       remoteStream.stop();
-      this.small_window = false;
     });
 
     this.client.on("stream-subscribed", (evt) => {
@@ -224,7 +208,6 @@ export default {
             height: (div.clientWidth / 16) * 9,
             cut: false, // 是否裁剪
           });
-          that.small_window = true;
         })
         .catch((err) => {
           console.warn("播放对方视频失败了: ", err);
@@ -411,7 +394,6 @@ export default {
           })
           .then(() => {
             console.warn("关闭摄像头 sucess");
-            this.large_window = false;
           })
           .catch((err) => {
             console.warn("关闭摄像头失败: ", err);
@@ -437,7 +419,6 @@ export default {
               height: (div.clientWidth / 16) * 9,
               cut: false, // 是否裁剪
             });
-            this.large_window = true;
           })
           .catch((err) => {
             console.warn("打开摄像头失败: ", err);
