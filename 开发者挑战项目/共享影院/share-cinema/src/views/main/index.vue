@@ -8,7 +8,12 @@
       </div>
       <div>
         <el-input v-model="channelName" placeholder="请输入房间号">
-          <el-button slot="append" icon="el-icon-search" @click="joinVideoRoom(channelName)">确定</el-button>
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            @click="joinVideoRoom(channelName)"
+            >确定</el-button
+          >
         </el-input>
       </div>
     </el-header>
@@ -39,7 +44,14 @@
                 加载中<span class="dot">...</span>
               </div></el-image
             >
-            <div>{{ item.name }}</div>
+            <div class="info">
+              <div>
+                {{ item.name }}
+                <el-tag v-for="t in item.type" :key="t" type="info">{{
+                  t
+                }}</el-tag>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,7 +68,14 @@
                 加载中<span class="dot">...</span>
               </div></el-image
             >
-            <div>{{ item.name }}</div>
+            <div class="info">
+              <div>
+                {{ item.name }}
+                <el-tag v-for="t in item.type" :key="t" type="info">{{
+                  t
+                }}</el-tag>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -94,32 +113,32 @@ export default {
       this.$socketio.on("my_response", function (msg, cb) {
         console.log("socket_response", msg);
       });
-      this.$socketio.emit("join", { room: channelName, id: id});
+      this.$socketio.emit("join", { room: channelName, id: id });
       const { path = "single" } = this.$route.query;
       this.$router.push({
         path: `/${path}`,
         query: { channelName, id },
       });
     },
-    joinVideoRoom(channelName){
-      console.log(channelName)
+    joinVideoRoom(channelName) {
+      console.log(channelName);
       let socket = this.$socketio;
-      let that = this
+      let that = this;
       this.$socketio.on("id_response", function (msg, cb) {
         console.log("id_response", msg);
-        if(msg.err==1){
-          const {path="single"}=that.$route.query;
-          let id = msg.id
+        if (msg.err == 1) {
+          const { path = "single" } = that.$route.query;
+          let id = msg.id;
           that.$router.push({
-            path:  `/${path}`,
-            query:{ channelName, id},
-          })
-        }else{
-          message('当前无该房间！')
+            path: `/${path}`,
+            query: { channelName, id },
+          });
+        } else {
+          message("当前无该房间！");
         }
       });
-      this.$socketio.emit("join", { room: channelName});
-    }
+      this.$socketio.emit("join", { room: channelName });
+    },
   },
 };
 </script>
@@ -184,11 +203,17 @@ export default {
     width: 28%;
     height: auto;
     margin: 0 0 20px 0;
-    text-align: center;
     cursor: pointer;
 
     .el-image {
       border-radius: 8px;
+    }
+
+    .info {
+      margin: 5px 0 0 0;
+      .el-tag {
+        border: none;
+      }
     }
   }
 }
