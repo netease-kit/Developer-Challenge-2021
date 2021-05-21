@@ -15,11 +15,7 @@ async_mode = None
 app = Flask(__name__)
 # app.config['SECRET_KEY'] = 'secret!'
 
-socketio = SocketIO(app, async_mode=async_mode, cors_allowed_origins='*',
-                    ssl_context=(
-                        "cert/cert.pem",
-                        "cert/key.pem"
-                    ))
+socketio = SocketIO(app)
 
 thread = None
 thread_lock = Lock()
@@ -177,4 +173,4 @@ def test_disconnect():
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, host='127.0.0.1', port=5000, debug=False, keyfile='cert/key.pem', certfile='cert/cert.pem')
