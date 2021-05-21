@@ -17,69 +17,157 @@
         </el-input>
       </div>
     </el-header>
-    <el-main>
-      <div class="carousel">
-        <el-carousel indicator-position="outside" type="card">
-          <el-carousel-item v-for="item in carouselData" :key="item.id + 18">
-            <div>
+    <el-container>
+      <el-aside width="auto">
+        <div class="recommend-aside">
+          <div><p>猜你想聊</p></div>
+          <div class="user">
+            <div class="avatar">
+              <el-avatar
+                :size="mini"
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+              ></el-avatar>
+            </div>
+            <div class="aside">
+              <div class="label">乱武 <span>在线</span></div>
+              <div class="info">
+                <div>你们看过32部相同的作品</div>
+                <div>
+                  你们共同的标签 <el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag>
+                </div>
+                <div>ta正在看...</div>
+                <div class="join-button"><el-button>加入房间</el-button></div>
+              </div>
+            </div>
+          </div>
+          <div class="user">
+            <div class="avatar">
+              <el-avatar
+                :size="mini"
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+              ></el-avatar>
+            </div>
+            <div class="aside">
+              <div class="label">乱武 <span>在线</span></div>
+              <div class="info">
+                <div>你们看过32部相同的作品</div>
+                <div>
+                  你们共同的标签 <el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag>
+                </div>
+                <div>ta正在看...</div>
+                <div class="join-button"><el-button>加入房间</el-button></div>
+              </div>
+            </div>
+          </div>
+          <div class="user">
+            <div class="avatar">
+              <el-avatar
+                :size="mini"
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+              ></el-avatar>
+            </div>
+            <div class="aside">
+              <div class="label">乱武 <span>在线</span></div>
+              <div class="info">
+                <div>你们看过32部相同的作品</div>
+                <div>
+                  你们共同的标签 <el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag
+                  ><el-tag type="info">动作</el-tag>
+                </div>
+                <div>ta正在看...</div>
+                <div class="join-button"><el-button>加入房间</el-button></div>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <el-button type="primary" icon="el-icon-refresh-right"
+              >换一批</el-button
+            >
+            <el-divider></el-divider>
+            <el-switch
+              style="display: block"
+              v-model="visiableSwitcher"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              active-text=""
+              inactive-text="允许其他用户看到你"
+            >
+            </el-switch>
+          </div>
+        </div>
+      </el-aside>
+      <el-main>
+        <div class="carousel">
+          <el-carousel indicator-position="outside" type="card">
+            <el-carousel-item v-for="item in carouselData" :key="item.id + 18">
+              <div>
+                <el-image
+                  fit="fit"
+                  :src="'http://127.0.0.1:5000/' + item.image"
+                >
+                  <div slot="placeholder" class="image-slot">
+                    加载中<span class="dot">...</span>
+                  </div></el-image
+                >
+              </div>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+        <div class="title">热门影视</div>
+        <div class="container">
+          <div
+            v-for="item in containerData.movie_list"
+            :key="item.id"
+            class="content"
+          >
+            <div @click="createVideoPage(item.id)">
               <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
                 <div slot="placeholder" class="image-slot">
                   加载中<span class="dot">...</span>
                 </div></el-image
               >
-            </div>
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-      <div class="title">热门影视</div>
-      <div class="container">
-        <div
-          v-for="item in containerData.movie_list"
-          :key="item.id"
-          class="content"
-        >
-          <div @click="createVideoPage(item.id)">
-            <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
-              <div slot="placeholder" class="image-slot">
-                加载中<span class="dot">...</span>
-              </div></el-image
-            >
-            <div class="info">
-              <div>
-                {{ item.name }}
-                <el-tag v-for="t in item.type" :key="t" type="info">{{
-                  t
-                }}</el-tag>
+              <div class="info">
+                <div>
+                  {{ item.name }}
+                  <el-tag v-for="t in item.type" :key="t" type="info">{{
+                    t
+                  }}</el-tag>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="title">网易游戏</div>
-      <div class="container">
-        <div
-          v-for="item in containerData.game_list"
-          :key="item.id"
-          class="content"
-        >
-          <div @click="createVideoPage(item.id)">
-            <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
-              <div slot="placeholder" class="image-slot">
-                加载中<span class="dot">...</span>
-              </div></el-image
-            >
-            <div class="info">
-              <div>
-                {{ item.name }}
-                <el-tag v-for="t in item.type" :key="t" type="info">{{
-                  t
-                }}</el-tag>
+        <div class="title">网易游戏</div>
+        <div class="container">
+          <div
+            v-for="item in containerData.game_list"
+            :key="item.id"
+            class="content"
+          >
+            <div @click="createVideoPage(item.id)">
+              <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
+                <div slot="placeholder" class="image-slot">
+                  加载中<span class="dot">...</span>
+                </div></el-image
+              >
+              <div class="info">
+                <div>
+                  {{ item.name }}
+                  <el-tag v-for="t in item.type" :key="t" type="info">{{
+                    t
+                  }}</el-tag>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </el-main>
+      </el-main>
+    </el-container>
   </el-container>
 </template>
 
@@ -94,6 +182,7 @@ export default {
       carouselData: [],
       containerData: [],
       channelName: "",
+      visiableSwitcher: true,
     };
   },
   mounted() {
@@ -154,10 +243,86 @@ export default {
     margin: 0 10px 0 10px;
   }
 }
+
+.el-aside {
+  width: unset;
+  max-width: 28%;
+}
+
+.recommend-aside {
+  margin: 10px 10px 10px 32px;
+  padding: 0 20px 20px 20px;
+  //background: white;
+  border: solid gainsboro 1px;
+  border-radius: 4px;
+  .user {
+    display: flex;
+    padding: 10px;
+
+    .avatar {
+      height: 100%;
+      text-align: justify;
+      margin-right: 10px;
+      //padding-right: 10px;
+    }
+
+    .aside {
+      display: inline-flex;
+      flex-direction: column;
+
+      .label {
+        width: 100%;
+        height: 20px;
+        font-size: 15px;
+        color: gray;
+
+        span {
+          color: #409eff;
+        }
+      }
+      .info {
+        font-size: 13px;
+
+        div {
+          margin: 5px 0 5px 0;
+        }
+
+        .join-button {
+          text-align: right;
+
+          button {
+            padding: 0;
+            background: none;
+            border: none;
+            color: #409eff;
+          }
+        }
+      }
+    }
+  }
+
+  .control {
+    .el-button {
+      background: none;
+      border: none;
+      color: #409eff;
+      padding: 0;
+    }
+
+    .el-divider {
+      margin: 10px;
+    }
+    .el-switch {
+      text-align: right;
+    }
+  }
+}
+
 .el-main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  margin-left: 32px;
 }
 .carousel {
   display: block;
