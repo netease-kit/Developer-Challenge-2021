@@ -29,15 +29,15 @@
               ></el-avatar>
             </div>
             <div class="aside">
-              <div class="label">乱武 <span>在线</span></div>
+              <div class="label">五婶萨达 <span>在线</span></div>
               <div class="info">
-                <div>你们看过32部相同的作品</div>
+                <div>你们看过19部相同的作品</div>
                 <div>
-                  你们共同的标签 <el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag>
+                  你们共同的标签 <el-tag type="info">运动</el-tag
+                  ><el-tag type="info">青春</el-tag
+                  ><el-tag type="info">冒险</el-tag>
                 </div>
-                <div>ta正在看...</div>
+                <div>ta正在看<b>《排球少年》</b></div>
                 <div class="join-button"><el-button>加入房间</el-button></div>
               </div>
             </div>
@@ -52,13 +52,13 @@
             <div class="aside">
               <div class="label">乱武 <span>在线</span></div>
               <div class="info">
-                <div>你们看过32部相同的作品</div>
+                <div>你们看过7部相同的作品</div>
                 <div>
                   你们共同的标签 <el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag>
+                  ><el-tag type="info">冒险</el-tag
+                  ><el-tag type="info">历史</el-tag>
                 </div>
-                <div>ta正在看...</div>
+                <div>ta正在看<b>《觉醒年代》</b></div>
                 <div class="join-button"><el-button>加入房间</el-button></div>
               </div>
             </div>
@@ -71,15 +71,15 @@
               ></el-avatar>
             </div>
             <div class="aside">
-              <div class="label">乱武 <span>在线</span></div>
+              <div class="label">青231321dsa <span>在线</span></div>
               <div class="info">
-                <div>你们看过32部相同的作品</div>
+                <div>你们看过3部相同的作品</div>
                 <div>
-                  你们共同的标签 <el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag
-                  ><el-tag type="info">动作</el-tag>
+                  你们共同的标签 <el-tag type="info">冒险</el-tag
+                  ><el-tag type="info">革命</el-tag
+                  ><el-tag type="info">悬疑</el-tag>
                 </div>
-                <div>ta正在看...</div>
+                <div>ta正在看<b>《追踪疑犯》</b></div>
                 <div class="join-button"><el-button>加入房间</el-button></div>
               </div>
             </div>
