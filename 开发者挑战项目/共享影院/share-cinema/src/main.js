@@ -15,7 +15,7 @@ Vue.use(VideoPlayer);
 Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false;
 
-var socket = io("/socket.io", { autoConnect: false });
+var socket = io("/server", { autoConnect: false });
 Vue.prototype.$socketio = socket;
 
 new Vue({

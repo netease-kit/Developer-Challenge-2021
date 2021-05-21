@@ -15,11 +15,11 @@ module.exports = {
     cert: fs.readFileSync("./cert/cert.pem"),
     openPage: "#/?path=single",
     proxy: {
-      "/socket.io": {
-        target: "http://localhost:5000/",
-        changeOrigin: true,
-        ws: true,
-      },
+      //   "/socket.io": {
+      //     target: "http://localhost:5000/",
+      //     changeOrigin: true,
+      //     ws: true,
+      //   },
       //   "sockjs-node": {
       //     target: "http://localhost:5000",
       //     ws: false,
