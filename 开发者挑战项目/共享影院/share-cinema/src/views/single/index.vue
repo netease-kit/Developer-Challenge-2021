@@ -32,23 +32,28 @@
                 t
               }}</el-tag>
             </div>
-            <div  style="margin-bottom: 10px; margin-top: 5px">
-              <div style="margin-right: 10px; font-size: 14px; font-weight: bold; margin-bottom: 5px">
+            <div style="margin-bottom: 10px; margin-top: 5px">
+              <div
+                style="
+                  margin-right: 10px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  margin-bottom: 5px;
+                "
+              >
                 {{ content.info }}
               </div>
 
-
-                <div class="hor">
-                  <el-image
-                    :src="'http://127.0.0.1:5000/' + content.image"
-                    style="width: 240px; height: 135px"
-                    fit="fit"
-                  ></el-image>
-                  <div style="flex: 1; margin-left: 10px">
-                    {{ content.content }}
-                  </div>
+              <div class="hor">
+                <el-image
+                  :src="'/server/' + content.image"
+                  style="width: 240px; height: 135px"
+                  fit="fit"
+                ></el-image>
+                <div style="flex: 1; margin-left: 10px">
+                  {{ content.content }}
                 </div>
-                
+              </div>
             </div>
           </div>
         </div>
@@ -84,11 +89,11 @@
               @click="stopOrOpenVideo"
             ></el-button>
           </div>
-          <div >
+          <div>
             <!--画面div-->
-            <div class="main-window"  ref="large"></div>
+            <div class="main-window" ref="large"></div>
             <!--小画面div-->
-            <div class="main-window"  ref="small"></div>
+            <div class="main-window" ref="small"></div>
           </div>
           <ChatView></ChatView>
         </div>
@@ -139,7 +144,7 @@ export default {
     // 获取后台数据
     window.self = this;
     axios
-      .get("http://127.0.0.1:5000/video_list", {})
+      .get("/server/video_list")
       .then((res) => {
         this.videoData = res.data.game_list.concat(res.data.movie_list);
         console.log("videoData", this.videoData);
@@ -237,7 +242,7 @@ export default {
       console.log(this.videoData[id - 1]);
       this.src = this.videoData[id - 1].url;
       this.content = this.videoData[id - 1];
-      console.log('1231123', this.src)
+      console.log("1231123", this.src);
     },
     getToken() {
       return getToken({

@@ -106,10 +106,7 @@
           <el-carousel indicator-position="outside" type="card">
             <el-carousel-item v-for="item in carouselData" :key="item.id + 18">
               <div>
-                <el-image
-                  fit="fit"
-                  :src="'http://127.0.0.1:5000/' + item.image"
-                >
+                <el-image fit="fit" :src="'/server/' + item.image">
                   <div slot="placeholder" class="image-slot">
                     加载中<span class="dot">...</span>
                   </div></el-image
@@ -126,7 +123,7 @@
             class="content"
           >
             <div @click="createVideoPage(item.id)">
-              <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
+              <el-image fit="fit" :src="'/server/' + item.image">
                 <div slot="placeholder" class="image-slot">
                   加载中<span class="dot">...</span>
                 </div></el-image
@@ -150,7 +147,7 @@
             class="content"
           >
             <div @click="createVideoPage(item.id)">
-              <el-image fit="fit" :src="'http://127.0.0.1:5000/' + item.image">
+              <el-image fit="fit" :src="'/server/' + item.image">
                 <div slot="placeholder" class="image-slot">
                   加载中<span class="dot">...</span>
                 </div></el-image
@@ -187,7 +184,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://127.0.0.1:5000/video_list", {})
+      .get("/server/video_list")
       .then((res) => {
         this.containerData = res.data;
         this.carouselData = res.data.ad_list;
