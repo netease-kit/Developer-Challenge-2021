@@ -15,20 +15,12 @@ async_mode = None
 app = Flask(__name__)
 # app.config['SECRET_KEY'] = 'secret!'
 
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 thread = None
 thread_lock = Lock()
 
 video_id = {}
-
-@app.after_request
-def cors(environ):
-    environ.headers['Access-Control-Allow-Origin'] = '*'
-    environ.headers['Access-Control-Allow-Method'] = '*'
-    environ.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, content-Type, Accept, Authorization'
-    environ.headers['Access-Control-Allow-Credentials'] = 'true'
-    return environ
 
 
 def background_thread():
@@ -41,21 +33,22 @@ def background_thread():
                       {'data': 'Server generated event', 'count': count})
 
 
-
 @app.route('/')
 def index():
     return render_template('index.html', async_mode=socketio.async_mode)
 
+
 '''
 获取视频列表
 '''
+
+
 @app.route('/video_list', methods=['GET'])
 def videoList():
-    with open('static/info.json','r',encoding='utf-8') as fp:
+    with open('static/info.json', 'r', encoding='utf-8') as fp:
         json_data = json.load(fp)
         response = make_response(json.dumps(json_data), 200)
         return response
-
 
 
 @socketio.event
@@ -85,10 +78,10 @@ def join(message):
              {'data': 'In rooms: ' + ', '.join(rooms())})
     elif message['room'] in video_id:
         emit('id_response',
-             {'err':1, 'id':video_id[message['room']]})
+             {'err': 1, 'id': video_id[message['room']]})
     else:
         emit('id_response',
-             {'err':0})
+             {'err': 0})
 
 
 # 离开房间
@@ -123,19 +116,19 @@ def my_room_event(message):
 @socketio.event
 def video_seeking(message):
     emit('seeking_response',
-         {'time': message['time'], 'uid':message['uid']}, to=message['room'])
+         {'time': message['time'], 'uid': message['uid']}, to=message['room'])
 
 
 @socketio.event
 def video_play(message):
     emit('play_response',
-         {'uid':message['uid']}, to=message['room'])
+         {'uid': message['uid']}, to=message['room'])
 
 
 @socketio.event
 def video_pause(message):
     emit('pause_response',
-         {'uid':message['uid']}, to=message['room'])
+         {'uid': message['uid']}, to=message['room'])
 
 
 @socketio.event
