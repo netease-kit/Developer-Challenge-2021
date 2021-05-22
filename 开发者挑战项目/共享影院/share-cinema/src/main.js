@@ -15,7 +15,7 @@ Vue.use(VideoPlayer);
 Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false;
 
-var socket = io("/socket.io");
+var socket = io("https://101.200.152.208");
 Vue.prototype.$socketio = socket;
 
 new Vue({
