@@ -8,14 +8,14 @@ require("video.js/dist/video-js.css");
 require("vue-video-player/src/custom-theme.css");
 import Axios from "axios";
 import ChatView from "./components/chat/chat.vue";
-import io from "./sockets/socketio";
+import { io } from "socket.io-client";
 
 Vue.use(ElementUI);
 Vue.use(VideoPlayer);
 Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false;
 
-var socket = io("/server");
+var socket = io("/socket.io");
 Vue.prototype.$socketio = socket;
 
 new Vue({

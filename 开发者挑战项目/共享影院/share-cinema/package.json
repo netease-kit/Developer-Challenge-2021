@@ -13,6 +13,7 @@
     "jssha": "^3.1.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "socket.io-client": "^4.1.2",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vue-video-player": "^5.0.2"

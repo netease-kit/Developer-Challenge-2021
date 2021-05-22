@@ -24,7 +24,7 @@ video_id = {}
 
 @app.after_request
 def cors(environ):
-    environ.headers['Access-Control-Allow-Origin'] = 'https://localhost:8020'
+    environ.headers['Access-Control-Allow-Origin'] = '*'
     environ.headers['Access-Control-Allow-Method'] = '*'
     environ.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, content-Type, Accept, Authorization'
     environ.headers['Access-Control-Allow-Credentials'] = 'true'
