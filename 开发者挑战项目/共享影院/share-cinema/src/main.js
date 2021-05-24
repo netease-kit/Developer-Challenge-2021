@@ -10,12 +10,18 @@ import Axios from "axios";
 import ChatView from "./components/chat/chat.vue";
 import { io } from "socket.io-client";
 
+let url = "http://localhost:5000/";
+try {
+  url = require("../server.js");
+} catch (e) {
+}
+
 Vue.use(ElementUI);
 Vue.use(VideoPlayer);
 Vue.component("ChatView", ChatView);
 Vue.config.productionTip = false;
 
-var socket = io("https://101.200.152.208");
+var socket = io(url);
 Vue.prototype.$socketio = socket;
 
 new Vue({

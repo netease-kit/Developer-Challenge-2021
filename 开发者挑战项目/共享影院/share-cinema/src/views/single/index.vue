@@ -227,6 +227,14 @@ export default {
         message(e);
         console.error(e);
       });
+
+    // 连接同步视频socket
+    let channelName = this.$route.query.channelName;
+    let id = this.$route.query.id;
+    this.$socketio.on("my_response", function (msg, cb) {
+      console.log("socket_response", msg);
+    });
+    this.$socketio.emit("join", { room: channelName, id: id });
   },
   destroyed() {
     try {
