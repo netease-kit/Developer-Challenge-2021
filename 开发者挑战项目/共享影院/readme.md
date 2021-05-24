@@ -2,6 +2,10 @@
 
 ### 内容介绍
 
+该项目旨在嵌入当今已经较为成熟的视频播放行业，让用户可以创建一个观影房，与远端的其他用户进行视频通讯并且同时观看同一剧集。做到相隔万里，依然可以零距离互动，感受剧集所带来的乐趣。
+
+### 项目结构
+
 * share-cinema: 共享影院前端源码
 * video-backend: 共享影院后端源码
 
@@ -24,3 +28,7 @@
     * 我们收集了用户的观看视频记录、在线时间、交流意愿等信息，为每个用户生成了个性化的用户画像
     * 我们在服务器上使用Celery+Flower进行定时任务管理，每天固定时间根据用户画像为用户生成用户推荐
 
+### 项目截图
+
+![avatar](https://github.com/RongRongJi/Developer-Challenge-2021/blob/RongRongJi/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%91%E6%88%98%E9%A1%B9%E7%9B%AE/%E5%85%B1%E4%BA%AB%E5%BD%B1%E9%99%A2/screenshot/1.png)
+![avatar](https://github.com/RongRongJi/Developer-Challenge-2021/blob/RongRongJi/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%91%E6%88%98%E9%A1%B9%E7%9B%AE/%E5%85%B1%E4%BA%AB%E5%BD%B1%E9%99%A2/screenshot/2.png)
