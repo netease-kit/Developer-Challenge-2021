@@ -13,7 +13,7 @@
           ></el-avatar>
         </div>
         <div class="aside">
-          <div class="label">{{ item.uid }} {{ item.time }}</div>
+          <div class="label">{{ item.uid }} {{ new Date(item.time).toLocaleTimeString("zh-CN") }}</div>
           <div class="text">
             <p>{{ item.text }}</p>
           </div>
@@ -74,7 +74,7 @@ export default {
       socket.emit("chat message", {
         uid: this.uid,
         room: this.room,
-        time: new Date().toLocaleTimeString("zh-CN"),
+        time: Date.now(),
         text: this.textarea,
       });
     },
