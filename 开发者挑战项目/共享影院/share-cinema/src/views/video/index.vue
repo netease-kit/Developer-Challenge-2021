@@ -21,6 +21,10 @@ export default {
       type: Object,
       required: true,
     },
+    uid: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
@@ -42,7 +46,7 @@ export default {
         width: document.documentElement.clientWidth,
       },
       lock: false,
-      localUid: Math.ceil(Math.random() * 1e5),
+      localUid: this.uid,
     };
   },
   mounted() {

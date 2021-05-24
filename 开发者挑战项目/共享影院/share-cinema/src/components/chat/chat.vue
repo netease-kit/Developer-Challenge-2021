@@ -1,29 +1,22 @@
 <template>
   <div class="chat">
     <div class="chat-window" v-bind:style="height">
-      <div class="chat-text left">
+      <div
+        v-for="item in chatMessage"
+        class="chat-text"
+        :key="item.time"
+        :class="item.uid == uid ? 'right' : 'left'"
+      >
         <div class="avatar">
           <el-avatar
-            :size="mini"
             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
           ></el-avatar>
         </div>
         <div class="aside">
-          <div class="label">乱武 2021年5月14日14:52:25</div>
-          <div class="text"><p>Hi，这是我的共享影院，一起来看剧吧！</p></div>
-        </div>
-      </div>
-
-      <div v-show="sentence" class="chat-text right">
-        <div class="avatar">
-          <el-avatar
-            :size="mini"
-            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-          ></el-avatar>
-        </div>
-        <div class="aside">
-          <div class="label">我 2021年5月14日14:55:40</div>
-          <div class="text"><p>真是太棒了！</p></div>
+          <div class="label">{{ item.uid }} {{ item.time }}</div>
+          <div class="text">
+            <p>{{ item.text }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +26,7 @@
           <el-button
             slot="append"
             icon="el-icon-check"
-            @click="createSentence()"
+            @click="sendMessageToRoom()"
             >发送</el-button
           >
         </el-input>
@@ -51,16 +44,39 @@ export default {
       required: false,
       default: NaN,
     },
+    uid: {
+      type: Number,
+      required: true,
+    },
+    room: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       textarea: "",
-      sentence: false,
+      chatMessage: [],
     };
   },
+  mounted() {
+    window.vue = this;
+    let socket = this.$socketio;
+    const that = this;
+    socket.on("chat message", function (msg, cb) {
+      console.log("chat message", msg);
+      that.chatMessage.push(msg);
+    });
+  },
   methods: {
-    createSentence() {
-      this.sentence = true;
+    sendMessageToRoom() {
+      let socket = this.$socketio;
+      socket.emit("chat message", {
+        uid: this.uid,
+        room: this.room,
+        time: new Date().toLocaleTimeString("zh-CN"),
+        text: this.textarea,
+      });
     },
   },
 };
@@ -108,6 +124,11 @@ export default {
         .text {
           width: 100%;
           min-height: 50px;
+          display: flex;
+
+          align-content: space-around;
+          align-items: center;
+
           p {
             position: relative;
             background: #3582e7;
@@ -116,6 +137,7 @@ export default {
             margin: 5px 10px 5px 10px;
             word-break: break-word;
             color: white;
+            min-height: 18px;
             padding: 5px 10px 5px 10px;
             line-height: 18px;
             z-index: 0;
@@ -146,6 +168,8 @@ export default {
       }
       .aside {
         .text {
+          justify-content: flex-start;
+
           p::before {
             left: -10px;
             border-left: 20px solid #3582e7;
@@ -164,7 +188,7 @@ export default {
       flex-direction: row-reverse;
 
       .avatar {
-        padding-left: 2px;
+        padding-left: 10px;
       }
 
       .aside {
@@ -173,6 +197,7 @@ export default {
         }
 
         .text {
+          justify-content: flex-end;
           text-align: right;
 
           p {

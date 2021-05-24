@@ -23,6 +23,7 @@
               v-if="videoNow"
               :src="src"
               :content="content"
+              :uid="this.localUid"
             ></VideoPage>
           </div>
           <div class="intro">
@@ -95,7 +96,10 @@
             <!--小画面div-->
             <div class="main-window" ref="small"></div>
           </div>
-          <ChatView></ChatView>
+          <ChatView
+            :uid="this.localUid"
+            :room="this.$route.query.channelName"
+          ></ChatView>
         </div>
       </el-main>
     </el-container>
