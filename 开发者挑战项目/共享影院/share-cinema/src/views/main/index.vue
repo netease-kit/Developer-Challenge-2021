@@ -194,6 +194,12 @@ export default {
   methods: {
     createVideoPage(id) {
       let channelName = Math.random().toFixed(5).slice(-5);
+      // 连接同步视频socket
+      let socket = this.$socketio;
+      this.$socketio.on("my_response", function (msg, cb) {
+        console.log("socket_response", msg);
+      });
+      this.$socketio.emit("join", { room: channelName, id: id });
       const { path = "single" } = this.$route.query;
       this.$router.push({
         path: `/${path}`,
@@ -202,6 +208,7 @@ export default {
     },
     joinVideoRoom(channelName) {
       console.log(channelName);
+      let socket = this.$socketio;
       let that = this;
       this.$socketio.on("id_response", function (msg, cb) {
         console.log("id_response", msg);
@@ -216,6 +223,7 @@ export default {
           message("当前无该房间！");
         }
       });
+      this.$socketio.emit("join", { room: channelName });
     },
   },
 };
