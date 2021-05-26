@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/skin_global_bg">
+    <com.netease.nim.ccsocial_nim.mainTab.fragment.IndexFragment.MyCircleActivity.PagerSlidingMyCircleTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_size_50"
+        android:background="@drawable/skin_global_bg" />
+    <!--  筛选-起始  -->
+    <com.netease.nim.ccsocial_nim.mainTab.fragment.IndexFragment.MyCircleActivity.FilterHeadView
+        android:id="@+id/main_filter_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tabs">
+    </com.netease.nim.ccsocial_nim.mainTab.fragment.IndexFragment.MyCircleActivity.FilterHeadView>
+    <!--  筛选-结束  -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_tab_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_filter_box"
+        android:layout_alignParentBottom="true"/>
+
+    <com.netease.nim.uikit.common.ui.drop.DropCover
+        android:id="@+id/unread_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</RelativeLayout>

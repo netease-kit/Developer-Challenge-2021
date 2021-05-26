@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  主基调  -->
+    <!--    主题蓝-->
+    <color name="colorPrimaryBlue">#6270DD</color>
+    <!--    主题黑-->
+    <color name="colorPrimaryBlack">#2c2c2c</color>
+    <!--    主题白-->
+    <color name="colorPrimaryWhite">#FFFFFF</color>
+    <!--    主题灰-->
+    <color name="colorPrimaryGray">#C5C3C3</color>
+    <!--    淡蓝色-->
+    <color name="colorPrimaryLightBlue">#7D87D5</color>
+    <!--    启动页灰白-->
+    <color name="colorBgGrayWhite">#FBFBFB</color>
+    <!--    背景淡灰-->
+    <color name="colorBgLightGray">#F3F4F7</color>
+    <!--  背景亮黑  -->
+    <color name="colorBgLightBlack">#515151</color>
+    <!--    标题黑-->
+    <color name="colorLabelBlack">#6A6A6A</color>
+    <!--    文字灰-->
+    <color name="colorFontGray">#8a8a8a</color>
+    <!--    文字黑-->
+    <color name="colorFontBlack">#515151</color>
+    <!--    分割灰-->
+    <color name="colorDividerGray">#DBDBDB</color>
+
+    <!--    透明-->
+    <color name="colorTransparent">#00000000</color>
+<!--    状态 绿-红-黄-->
+    <color name="colorStateRed">#E26060</color>
+    <color name="colorStateGreen">#4DB849</color>
+    <color name="colorStateYellow">#F0D54F</color>
+
+<!--    DatePicker-->
+    <color name="date_picker_bg">#FFFFFF</color>
+    <color name="date_picker_divider">#11112233</color>
+    <color name="date_picker_text_light">#6270DD</color>
+    <color name="date_picker_text_dark">#333333</color>
+
+    <color name="main_bg">#F0F0F0</color>
+    <color name="select_title_text">#B0B0B0</color>
+    <color name="current_time_bg">#FFFFFF</color>
+    <color name="current_time_text">#666666</color>
+    <color name="selected_time_text">#6270DD</color>
+</resources>

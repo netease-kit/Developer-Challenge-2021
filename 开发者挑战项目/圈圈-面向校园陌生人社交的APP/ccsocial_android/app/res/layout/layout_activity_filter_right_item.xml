@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/label_right"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textSize="@dimen/dp_size_14"
+    android:textColor="@color/colorFontGray"
+    android:paddingTop="@dimen/dp_size_10"
+    android:paddingBottom="@dimen/dp_size_10"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:text="运动"
+    android:background="@color/colorPrimaryWhite"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1">
+</TextView>

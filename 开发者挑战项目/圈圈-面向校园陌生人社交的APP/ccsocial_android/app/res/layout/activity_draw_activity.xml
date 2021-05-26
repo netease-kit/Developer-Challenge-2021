@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:background="@color/colorBgLightGray"
+    android:orientation="vertical"
+    tools:context=".mainTab.MainActivity">
+
+    <com.outman.framework.view.CarouselView.CarrouselLayout
+        android:id="@+id/carrousel"
+        app:rotateDirection="anticlockwise"
+        app:r="200dp"
+        app:rotationTime="3000"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"></com.outman.framework.view.CarouselView.CarrouselLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/white_bg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        >
+
+        <EditText
+            android:id="@+id/text_draw_activity_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="找几个人一起打球"
+            android:textColor="@color/colorPrimaryBlue"
+            android:textSize="@dimen/text_size_16"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:maxLength="15"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_draw_activity_pnum"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_pnum" />
+
+            <TextView
+                android:id="@+id/text_draw_activity_pnum_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="参与人数"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.outman.framework.view.AmountView
+                android:id="@+id/amount_view"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="right"
+                app:btnTextSize="14sp"
+                app:btnWidth="20dp"
+                app:tvWidth="40dp" >
+
+            </com.outman.framework.view.AmountView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_draw_activity_start"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_time" />
+
+            <TextView
+                android:id="@+id/text_draw_activity_start_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="开始时间"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_draw_activity_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="选择时间"
+                android:textSize="@dimen/text_size_14" />
+
+            <ImageView
+                android:id="@+id/img_draw_activity_start_right"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/icon_login_right_gray_arrow" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_draw_activity_end"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_time" />
+
+            <TextView
+                android:id="@+id/text_draw_activity_end_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="结束时间"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_draw_activity_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="选择时间"
+                android:textSize="@dimen/text_size_14" />
+
+            <ImageView
+                android:id="@+id/img_draw_activity_end_right"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/icon_login_right_gray_arrow" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_draw_activity_pos"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_pos" />
+
+            <TextView
+                android:id="@+id/text_draw_activity_pos_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="活动地点"
+                android:layout_marginRight="60dp"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_draw_activity_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="选择地点"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+
+            <ImageView
+                android:id="@+id/img_draw_activity_pos_right"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/icon_login_right_gray_arrow" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_draw_activity_private"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_private" />
+
+            <TextView
+                android:id="@+id/text_draw_activity_private_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="私密"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_14" />
+
+            <Switch
+                android:id="@+id/switch_draw_activity_is_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_custom_thumb_selector"
+                android:track="@drawable/switch_custom_track_selector" />
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/text_draw_activity_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:background="@null"
+            android:gravity="top"
+            android:lines="4"
+            android:textSize="@dimen/text_size_14"
+            android:maxLength="50"
+            android:hint="描述下你画的圈子吧~"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#C9C9CB"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btn_draw_activity_sure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_toast_bg_blue"
+            android:text="@string/text_index_draw_circle"
+            android:textColor="@color/colorPrimaryWhite"
+            android:textSize="@dimen/text_size_18" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

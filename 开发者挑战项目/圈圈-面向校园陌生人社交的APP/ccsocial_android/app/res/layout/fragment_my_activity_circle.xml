@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.outman.framework.utils.DampScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgLightGray"
+    android:id="@+id/fragment_index">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/layout_index_box_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/colorWhite"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_index_box_activity"
+            android:textSize="@dimen/dp_size_12"
+            android:background="@color/colorPrimaryWhite"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp_size_10"
+            android:text="我不能再给你更多啦~"/>
+    </RelativeLayout>
+
+</com.outman.framework.utils.DampScrollView>

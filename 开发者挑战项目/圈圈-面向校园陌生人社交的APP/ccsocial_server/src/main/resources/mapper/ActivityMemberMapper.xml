@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ccsocial.mapper.ActivityMemberMapper">
+    <select id="selectIdentifyById" parameterType="String" resultType="String">
+        select user_activity_identify from activityMember
+        where user_ccid = #{userCcid}
+        and activity_id = #{activityId}
+    </select>
+
+    <select id="selectCcidByActivityId" parameterType="String" resultType="String">
+        select user_ccid from activityMember
+        where activity_id = #{activityId}
+    </select>
+
+    <select id="groupIsNotFull" parameterType="String" resultType="Integer">
+        SELECT (SELECT activity_max_people_num FROM activity WHERE activity_id =  #{activityId})
+                   >
+               (SELECT COUNT(*) FROM activityMember WHERE activity_id =  #{activityId})
+    </select>
+
+    <insert id="setActivityMember">
+        insert into activityMember(activity_id,user_ccid,user_activity_identify)
+        values (#{activityId},#{userCcid},#{userActivityIdentify})
+    </insert>
+
+    <select id="countPeopleNumByActivityId" resultType="Integer">
+        select count(*) from activityMember where activity_id = #{activityId}
+    </select>
+
+    <select id="countByCcid" resultType="Integer">
+        select count(*) from activityMember where user_ccid = #{userCcid}
+    </select>
+
+    <select id="selectByCcid" resultType="cn.ccsocial.model.ActivityMember">
+        select * from activityMember where user_ccid = #{userCcid}
+        limit #{page.startLoaction},#{page.pageQty}
+    </select>
+
+    <select id="countById" resultType="Integer">
+        select count(*) from activityMember
+        where user_ccid = #{userCcid}
+        and activity_id = #{activityId}
+    </select>
+
+    <delete id="deleteActivity" parameterType="String">
+        delete from activityMember where activity_id = #{activityId}
+    </delete>
+
+    <delete id="quitActivity" parameterType="String">
+        delete from activityMember
+        where user_ccid = #{userCcid}
+        and activity_id = #{activityId}
+    </delete>
+
+<!--    转让发起人身份-->
+<!--    <update id="quitActivity" parameterType="String">-->
+<!--        update activityMember set user_activity_identity = 'creator'-->
+<!--        where user_ccid = #{userCcid}-->
+<!--        and activity_id = #{activityId}-->
+<!--    </update>-->
+</mapper>

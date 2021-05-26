@@ -1,0 +1,100 @@
+import java.text.SimpleDateFormat
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    apply from: 'script.gradle', to: buildscript
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'http://developer.huawei.com/repo/' }
+        google()
+
+    }
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+//                if (details.requested.group == 'androidx.core') {
+//                    details.useVersion "1.0.1"
+//                }
+//                if (details.requested.group == 'androidx.appcompat' &&
+//                        !details.requested.name.contains('androidx')) {
+//                    details.useVersion "1.2.0"
+//                }
+//                if (details.requested.group == 'androidx.viewpager2' &&
+//                        !details.requested.name.contains('androidx')) {
+//                    details.useVersion "1.0.0"
+//                }
+//                if (details.requested.group == 'com.google.code.gson') {
+//                    details.useVersion "2.8.6"
+//                }
+            }
+        }
+    }
+}
+
+
+ext {
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.2"
+    minSdkVersion = 21
+    targetSdkVersion = 28
+    appTargetSdkVersion = 28
+    versionCode = 150
+    versionName = '8.1.0'
+    sdkSourceCompatibility = 1.8
+    sdkTargetCompatibility = 1.8
+    appSourceCompatibility = 1.8
+    appTargetCompatibility = 1.8
+    nimOutputDir = "nim-outputs-${versionName}-${getBuildTime()}-${getGitVersion()}"
+
+    //参考other-sdks 下的版本， 严格按照绑定的NRTC 版本来 ，使用 fetch_nrtc.sh 更新NRTC时会自动修改
+    nosSdkVersion = '1.0.1'
+    reportSdkVersion = '2.0.1'
+}
+
+static def getGitVersion() {
+    try {
+        return 'git rev-parse --short HEAD'.execute().text.trim()
+    } catch (Throwable th) {
+        th.printStackTrace()
+        return ""
+    }
+}
+
+static def getBuildTime() {
+    Date date = new Date()
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd")
+    return simpleDateFormat.format(date)
+}
+ext {
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.0"
+    minSdkVersion = 19
+    targetSdkVersion = 30
+
+    nertcSdk = "com.netease.yunxin:nertc:4.0.3"
+
+    nimVersion = '8.3.1'
+    imSdk = "com.netease.nimlib:basesdk:$nimVersion"
+    avsignallingSdk = "com.netease.nimlib:avsignalling:$nimVersion"
+    imPushSdk = "com.netease.nimlib:push:$nimVersion"
+    luceneSdk = "com.netease.nimlib:lucene:$nimVersion"
+    chatroomSdk = "com.netease.nimlib:chatroom:$nimVersion"
+    rtsSdk = "com.netease.nimlib:rts:$nimVersion"
+    superteamSdk = "com.netease.nimlib:superteam:$nimVersion"
+    ysfSdk = "com.netease.nimlib:ysf:$nimVersion"
+
+    ndkAbis = [
+            'armeabi-v7a',
+            'x86',
+            'arm64-v8a',
+            'x86_64'
+    ]
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

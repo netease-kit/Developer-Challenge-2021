@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:background="@color/colorBgLightGray"
+    android:orientation="vertical"
+    tools:context=".mainTab.MainActivity">
+    <TextView
+        android:id="@+id/edu_bind_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/dp_size_10"
+        android:text="@string/text_detail_activity_label"
+        android:textColor="@color/colorPrimaryBlue"
+        android:textSize="@dimen/dp_size_18"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/white_bg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        >
+
+        <com.outman.framework.view.ImageClipView.CircleImageView
+            android:id="@+id/img_head_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/dp_size_20"
+            android:layout_marginBottom="@dimen/dp_size_20"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_index_activity" />
+
+        <TextView
+            android:id="@+id/text_detail_activity_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryBlue"
+            android:gravity="center"
+            android:text="一起打篮球吧"
+            android:layout_marginBottom="@dimen/dp_size_20"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_detail_activity_pnum"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_pnum" />
+
+            <TextView
+                android:id="@+id/text_detail_activity_pnum_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="参与人数"
+                android:textSize="@dimen/text_size_14" />
+<!--            来个横向布局放头像-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/img_detail_activity_user_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/text_detail_activity_pnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="1/5人"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_size_20"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_detail_activity_start"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_time" />
+
+            <TextView
+                android:id="@+id/text_detail_activity_start_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="开始时间"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_detail_activity_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="2020-09-08 19:00"
+                android:textSize="@dimen/text_size_14" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_size_20"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_detail_activity_end"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_time" />
+
+            <TextView
+                android:id="@+id/text_detail_activity_end_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="结束时间"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_detail_activity_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="2020-09-08 21:00"
+                android:textSize="@dimen/text_size_14" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_size_20"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_detail_activity_pos"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_pos" />
+
+            <TextView
+                android:id="@+id/text_detail_activity_pos_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="活动地点"
+                android:layout_marginRight="60dp"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_detail_activity_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="体育馆"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+            <ImageView
+                android:id="@+id/img_detail_activity_map"
+                android:layout_width="@dimen/dp_size_20"
+                android:layout_height="@dimen/dp_size_20"
+                android:layout_marginLeft="@dimen/dp_size_4"
+                android:src="@drawable/icon_map"
+                android:gravity="right|center_vertical"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_size_20"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_detail_activity_private"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/icon_draw_activity_private" />
+
+            <TextView
+                android:id="@+id/text_detail_activity_private_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="私密"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_14" />
+            <TextView
+                android:id="@+id/text_detail_activity_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="私密"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/text_detail_activity_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:gravity="top"
+            android:lines="4"
+            android:text="下午2点不见不散"
+            android:textSize="@dimen/text_size_14"
+            android:maxLength="50"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#C9C9CB"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dp_size_20">
+            <Button
+                android:id="@+id/btn_detail_activity_join"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/dp_size_10"
+                android:background="@drawable/shape_btn_bg_blue"
+                android:text="@string/text_detail_activity_join"
+                android:textColor="@color/colorPrimaryWhite"
+                android:textSize="@dimen/text_size_16" />
+            <Button
+                android:id="@+id/btn_detail_activity_join_s"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dp_size_10"
+                android:background="@drawable/shape_btn_bg_light_black"
+                android:text="@string/text_detail_activity_join_s"
+                android:textColor="@color/colorPrimaryWhite"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
