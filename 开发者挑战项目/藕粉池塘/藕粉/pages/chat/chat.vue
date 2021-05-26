@@ -11,7 +11,7 @@
 		<view class="page-body">
 			<block v-for="(item,index) in msgList" :key="index">
 				<!-- 左边消息 -->
-				<view v-if="item.from_uid == user.uid" class="chat-item chat-item-left">
+				<view v-if="item.from_uid != user.uid" class="chat-item chat-item-left">
 					<u-avatar :src="user.avatar" class="avatar"></u-avatar>
 					<view class="conent">{{item.content}}</view>
 				</view>
@@ -32,35 +32,21 @@
 </template>
 
 <script>
-	import SDK from '../../static/js/NIM_Web_SDK_v8.4.0.js'
-	
+
 	export default {
 		data() {
 			return {
 				mTxt: "",
-				msgList: [{avatar:'',content:'欢迎入群'}],
-				userInfo: uni.getStorageSync("userInfo"),
+				msgList: [],
+				userInfo:getApp().globalData.userInfo,
+				IMData:getApp().globalData.IMData,
 				user: {},
-				page: 1
-			};
+				page: 1,
+				teamId:''
+			}; 
 		},
 		onLoad(options) {
-
-			let self = this
-			var data = {};
-			// 注意这里, 当引入的SDK文件是NIM_Web_NIM_v.js时，请通过 NIM.getInstance 来初始化；当引入的SDK文件为NIM_Web_SDK_v时，请使用 SDK.NIM.getInstance 来初始化。SDK文件的选择请参见集成方式。
-			var nim = SDK.NIM.getInstance({
-				debug: true, // 是否开启日志，将其打印到console。集成开发阶段建议打开。
-				appKey: '',
-				account: '123',
-				token: '',
-				db: true, //若不要开启数据库请设置false。SDK默认为true。
-				// privateConf: {}, // 私有化部署方案所需的配置
-				onroamingmsgs: function(obj) {
-					console.log('漫游消息', obj);
-					pushMsg(obj.msgs);
-				}
-			});
+			this.teamId = options.teamId
 		},
 		methods: {
 			getMessage() {
@@ -72,16 +58,19 @@
 					this.updateChatStatus();
 				})
 			},
-			sendMessage() {
-				this.$H.post("user/sendMessage", {
-					uid: this.user.uid,
-					content: this.mTxt
-				}).then(res => {
-					if (res.code == 200) {
-						this.getMessage();
-						this.mTxt = "";
-					}
-				})
+			async sendMessage() {
+				await uniCloud.post('/msgs',{
+					from:this.userInfo.accid,
+					ope:1,
+					to:this.teamId,
+					type:0,
+					body:JSON.stringify({
+					  "msg":this.mTxt
+					}),
+				}),
+				this.msgList.push({avatar:'',content:this.mTxt})
+				this.mTxt = ""
+				
 			},
 			// 更新阅读状态
 			updateChatStatus() {

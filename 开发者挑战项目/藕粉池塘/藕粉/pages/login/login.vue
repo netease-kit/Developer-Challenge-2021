@@ -1,13 +1,14 @@
 <template>
 	<view class="login">
-		<image class="logo" :src="shareCover"></image>
+		<!-- <image class="logo" :src="shareCover"></image> -->
 		<text class="txt1">申请获取以下权限</text>
 		<text class="txt2">获取你的公开信息（昵称、头像等）</text>
-		<u-button type="success" open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin" shape="circle">授权登录</u-button>
+		<u-button type="success"  lang="zh_CN" @click="userLogin" shape="circle">授权登录</u-button>
 	</view>
 </template>
 
 <script>
+	import initNIM from '../../common/init-im.js'
 	export default {
 		data() {
 			return {
@@ -24,31 +25,33 @@
 					this.shareCover = res.result.intro;
 				})
 			},
-			userLogin(e) {
-				let that = this;
-				let userInfo = e.detail.userInfo;
-				uni.login({
-					success: function(res) {
-						if (res.code) {
-							that.$H.post('user/miniWxLogin', {
-								code: res.code,
-								username: userInfo.nickName,
-								avatar: userInfo.avatarUrl,
-								province: userInfo.province,
-								city: userInfo.city,
-								gender: userInfo.gender
-							}).then(res2 => {
-								if (res2.code === 200) {
-									uni.setStorageSync("hasLogin", true);
-									uni.setStorageSync("token", res2.result.token);
-									uni.navigateBack();
-									that.getUserInfo();
-								}
-							})
-						}
-					}
-				});
-			},
+			async userLogin(e) {
+				// let userInfo =  await uni.getUserProfile({
+				// 	desc:"获取用户信息"
+				// })
+				let userInfo = {
+					nickName:'phz',
+					avatarUrl:''
+				}
+				// userInfo = userInfo[1].userInfo
+				getApp().globalData.userInfo = {
+					nickName:userInfo.nickName,
+					avatarUrl:userInfo.avatarUrl,
+					accid : 'phz',
+					token:'ecfb3279a5c100106aff93fd083643e4'
+				}
+				if(JSON.stringify(getApp().globalData.nim) == '{}'){
+					let nim = initNIM()
+					Object.assign(getApp().globalData.nim,nim)
+					// getApp().globalData.nim = 
+				}
+				uni.showToast({
+					title:'登录成功'
+				})
+				uni.navigateBack({
+					
+				})
+			}, 
 			getUserInfo() {
 				this.$H.get("user/userInfo").then(res => {
 					uni.setStorageSync("userInfo", res.result)

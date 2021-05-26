@@ -1,0 +1,1 @@
+<view><discuss-list vue-id="7dcbefe0-1" list="{{disList}}" loadStatus="{{loadStatus}}" bind:__l="__l"></discuss-list></view>

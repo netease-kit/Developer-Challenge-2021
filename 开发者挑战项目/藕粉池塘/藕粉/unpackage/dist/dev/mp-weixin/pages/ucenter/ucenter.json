@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "个人主页",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "topic-list": "/components/topic-list/topic-list",
+    "post-list": "/components/post-list/post-list"
+  }
+}

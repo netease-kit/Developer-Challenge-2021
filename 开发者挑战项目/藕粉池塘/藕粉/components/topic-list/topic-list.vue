@@ -3,14 +3,10 @@
 		<block v-for="(item,index) in list" :key="index">
 			<navigator :url="'/pages/topic-detail/topic-detail?id='+item.id">
 				<view class="topic-item">
-					<u-image width="120rpx" height="120rpx" border-radius="10rpx" :src="item.cover_image"></u-image>
+					<u-image width="120rpx" height="120rpx" border-radius="10rpx" src="https://yunxin.163.com/res/image/base/weixin-qrcode.jpg?v=3"></u-image>
 					<view style="margin-left: 10rpx;margin-right: 20rpx;">
-						<view>{{item.topic_name}}</view>
-						<text class="user-count">{{item.description.substring(0,20)}}</text>
-					</view>
-					<view class="num">
-						<text class="user-count">{{item.user_count}}个成员</text>
-						<text class="post-count">{{item.post_count}}个作品</text>
+						<view>{{item.name}}</view>
+						<text class="user-count">{{item.intro}}</text>
 					</view>
 				</view>
 			</navigator>

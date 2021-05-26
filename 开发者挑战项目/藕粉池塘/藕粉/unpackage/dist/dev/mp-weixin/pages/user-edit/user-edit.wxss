@@ -1,0 +1,36 @@
+
+page {
+	background-color: #F5F5F5;
+}
+
+
+.c-wrap.data-v-64c38fe0 {
+	padding: 20rpx;
+	background-color: #FFFFFF;
+}
+.bind-mobile.data-v-64c38fe0 {
+	display: -webkit-box;
+	display: flex;
+}
+
+/* 标签 */
+.tag-box.data-v-64c38fe0 {}
+.tag-box .tag.data-v-64c38fe0 {
+	padding: 10rpx 20rpx;
+	border-radius: 20rpx;
+	font-size: 24rpx;
+	display: inline-block;
+	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+	background-color: #ffebe5;
+}
+.tag-box .tag.data-v-64c38fe0:nth-child(2n) {
+	background-color: #ecf9f2;
+}
+.tag-box .tag.data-v-64c38fe0:nth-child(3n) {
+	background-color: #fff7e5;
+}
+.tag-box .tag.data-v-64c38fe0:nth-child(5n) {
+	background-color: #b3e0ff;
+}
+

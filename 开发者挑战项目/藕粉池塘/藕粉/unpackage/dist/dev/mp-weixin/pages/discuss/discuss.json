@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "post-list": "/components/post-list/post-list",
+    "u-icon": "/uview-ui/components/u-icon/u-icon"
+  }
+}

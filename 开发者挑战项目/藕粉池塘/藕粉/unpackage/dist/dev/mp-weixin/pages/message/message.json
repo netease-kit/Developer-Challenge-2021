@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "u-grid": "/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/uview-ui/components/u-grid-item/u-grid-item",
+    "u-badge": "/uview-ui/components/u-badge/u-badge",
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "u-tag": "/uview-ui/components/u-tag/u-tag",
+    "u-action-sheet": "/uview-ui/components/u-action-sheet/u-action-sheet"
+  }
+}

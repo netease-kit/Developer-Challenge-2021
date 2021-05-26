@@ -31,26 +31,26 @@
 				menus: ['shareAppMessage', 'shareTimeline']
 			})
 			//#endif
-			// 获取消息
-			if (uni.getStorageSync("token")) {
-				this.$H.post("message/num").then(res => {
+			// // 获取消息
+			// if (uni.getStorageSync("token")) {
+			// 	this.$H.post("message/num").then(res => {
 
-					let num = res.result;
-					let numCount = num.all_count;
+			// 		let num = res.result;
+			// 		let numCount = num.all_count;
 
-					this.$store.state.messegeNum = numCount;
-					if (numCount > 0) {
-						uni.setTabBarBadge({
-							index: 3,
-							text: numCount.toString()
-						})
-					} else {
-						uni.removeTabBarBadge({
-							index: 3
-						})
-					}
-				})
-			}
+			// 		this.$store.state.messegeNum = numCount;
+			// 		if (numCount > 0) {
+			// 			uni.setTabBarBadge({
+			// 				index: 3,
+			// 				text: numCount.toString()
+			// 			})
+			// 		} else {
+			// 			uni.removeTabBarBadge({
+			// 				index: 3
+			// 			})
+			// 		}
+			// 	})
+			// }
 		},
 		onHide: function() {
 			// console.log('App Hide');
@@ -62,6 +62,9 @@
 	@import "uview-ui/index.scss";
 	@import "static/css/iconfont.css";
 
+	@import "colorui/main.css";
+	@import "colorui/icon.css";
+	
 	page {
 		font-size: 32rpx;
 		line-height: 1.7;

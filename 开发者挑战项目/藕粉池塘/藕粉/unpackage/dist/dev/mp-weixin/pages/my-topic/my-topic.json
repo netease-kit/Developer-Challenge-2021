@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "topic-list": "/components/topic-list/topic-list",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-icon": "/uview-ui/components/u-icon/u-icon"
+  }
+}

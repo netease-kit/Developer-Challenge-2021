@@ -1,0 +1,15 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "post-list": "/components/post-list/post-list",
+    "user-list": "/components/user-list/user-list",
+    "dis-list": "/components/discuss-list/discuss-list"
+  }
+}
