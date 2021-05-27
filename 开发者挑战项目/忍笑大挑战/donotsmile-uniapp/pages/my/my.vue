@@ -9,15 +9,15 @@
 			<p class="info_text">简介</p>
 			<view class="flex">
 				<div class="info_item">
-					<p>16</p>
+					<p>0</p>
 					<p>关注</p>
 				</div>
 				<div class="info_item">
-					<p>32</p>
+					<p>0</p>
 					<p>粉丝</p>
 				</div>
 				<div class="info_item">
-					<p>3</p>
+					<p>0</p>
 					<p>动态</p>
 				</div>
 			</view>

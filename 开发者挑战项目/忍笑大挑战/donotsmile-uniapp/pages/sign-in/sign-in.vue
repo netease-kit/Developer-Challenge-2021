@@ -18,7 +18,7 @@
 				<input type="text" v-model="username" placeholder="用户名" />
 			</view>
 			<view class="form-input">
-				<input type="password" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
+				<input :password="true" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
 			</view>
 			<button @click="bindSubmit" class="bg-yellow">登录</button>
 			<navigator url="../sign-up/sign-up">
@@ -29,12 +29,15 @@
 </template>
 
 <script>
+	import initNIM from '../../common/init-im.js';
+	import Vue from 'vue'
+	
 	export default {
 		data() {
 			return {
 				hideEyes: false,
-				username:"",
-				password:''
+				username: "",
+				password: ''
 			}
 		},
 		methods: {
@@ -42,15 +45,25 @@
 				this.hideEyes = !this.hideEyes;
 			},
 			async bindSubmit(e) {
-				let r= await uniCloud.post('/users/sign-in',{
+				let userInfo = await uniCloud.post('/users/sign-in',{
 					username:this.username,
 					password:this.password
 				})
-				if(r){
-					getApp().globalData.userInfo = {username:this.username}
-					uni.navigateBack()
+				if(userInfo){
+					getApp().globalData.userInfo = userInfo
+					getApp().globalData.friends = []
+					console.log('userInfo' +userInfo);
+					if(getApp().globalData.nim==undefined){
+						getApp().globalData.nim =  initNIM()
+						console.log(getApp().globalData.nim);
+					}
+					
+					Vue.prototype.nim = getApp().globalData.nim
+					 
+					uni.switchTab({
+						url:'../index/index'
+					})
 				}
-				
 			}
 		}
 	}

@@ -18,7 +18,7 @@
 				<input type="text" v-model="username" placeholder="用户名" />
 			</view>
 			<view class="form-input">
-				<input type="password" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
+				<input :password="true" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
 			</view>
 			<button @click="bindSubmit" class="bg-yellow">注册</button>
 		</view>
@@ -39,14 +39,18 @@
 				this.hideEyes = !this.hideEyes;
 			},
 			async bindSubmit(e) {
-				await uniCloud.post('/users/sign-up',{
+				let r = await uniCloud.post('/users/sign-up',{
 					username:this.username,
 					password:this.password
 				})
 				uni.showToast({
 					title:"注册成功"
 				})
-				uni.navigateBack()
+				getApp().globalData.userInfo = r
+				console.log(getApp().globalData.userInfo)
+				uni.navigateTo({
+					url:'../index/index'
+				})
 			}
 		}
 	}

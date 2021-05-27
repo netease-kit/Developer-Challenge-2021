@@ -9,11 +9,11 @@ function _postProcessResult(r){
 		if(r.result.status == 200){
 			return r.result.data	
 		}else{
-			uni.showModal({
-				showCancel: false,
-				content: r.result.msg
+			uni.showToast({
+				icon:'none',
+				title: r.result.msg||r.result.status
 			})
-			return false
+			throw new Error(r.result.msg||r.result.status)
 		}
 	}else{
 		console.log("云请求出现错误")

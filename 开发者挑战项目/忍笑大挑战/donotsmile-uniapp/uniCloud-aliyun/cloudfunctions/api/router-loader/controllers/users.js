@@ -1,6 +1,7 @@
 const ResponseMessage = require('../../response-message')
 var crypto = require('crypto')
 var jwt = require('../../uni-jwt')
+var IMService = require("../../services/IMService")
 
 module.exports = {
 	'POST /sign-in': async (ctx, next) => {
@@ -41,11 +42,19 @@ module.exports = {
 		}else{
 			let hashedPwd = jwt.encryptPwd({username,password})
 			
+			let createResult =  await IMService.createAccount(username)
+			console.log(createResult);
+			if(createResult.code != 200){
+				ctx.throw(400,"创建IM账号出错") 
+			}
+			
+
 			let r = await ctx.db.collection('users').add({
 				username,
-				password:hashedPwd
+				password:hashedPwd,
+				im_info:createResult.info
 			})
-			let user = {username}
+			let user = {username,im_info:createResult.info}
 			ctx.body = user
 		}
 		return next()

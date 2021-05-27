@@ -13,7 +13,10 @@
 
 <script>
 	export default {
-		data() {
+		onLoad() {
+		
+		},
+		data () {
 			return {
 				
 			}
