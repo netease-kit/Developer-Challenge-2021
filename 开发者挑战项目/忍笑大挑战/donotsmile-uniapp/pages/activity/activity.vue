@@ -32,7 +32,9 @@
 						<text class="cuIcon cuIcon-message" style="font-size: 1.6em;"></text>
 						<text>99</text>
 					</view>
-					<button class="cu-btn bg-orange round">挑战</button>
+					<navigator url="../challenge/challenge">
+						<button class="cu-btn bg-orange round" >挑战</button>
+					</navigator>
 				</view>
 			</view>
 		</view>
@@ -48,8 +50,7 @@
 					avatar_url: '',
 					content: '哈哈哈哈哈哈哈哈～～～～这也太好笑了吧！',
 					timestamp:'2021-05-01',
-					coverList:['https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg',
-					'https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg','https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg'],
+					coverList:['./static/screenshot.png','./static/screenshot.png'],
 					score:8.5
 				}],
 				TabCur: '',

@@ -29,7 +29,7 @@
 
 		},
 		onShow: function() {
-			if(getApp().globalData.userInfo== undefined){
+			if(this.globalData.userInfo== undefined){
 				uni.navigateTo({
 					url:'pages/sign-in/sign-in'
 				})

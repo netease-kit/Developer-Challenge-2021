@@ -18,25 +18,33 @@
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#fbbd08",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home_selected.png"
       },
       {
         "pagePath": "pages/activity/activity",
-        "text": "动态"
+        "text": "动态",
+        "iconPath": "static/activity.png",
+        "selectedIconPath": "static/activity_selected.png"
       },
       {
         "pagePath": "pages/message/message",
-        "text": "消息"
+        "text": "消息",
+        "iconPath": "static/msg.png",
+        "selectedIconPath": "static/msg_selected.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我的"
+        "text": "我的",
+        "selectedIconPath": "static/my_selected.png",
+        "iconPath": "static/my.png"
       }
     ]
   },

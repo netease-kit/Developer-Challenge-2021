@@ -21,4 +21,4 @@ exports.main = async (event, context) => {
 	//执行 app 返回数据给客户端
 	// console.log(JSON.stringify(event) + JSON.stringify(context))
 	return app.listen(event, context)
-}
+} 
