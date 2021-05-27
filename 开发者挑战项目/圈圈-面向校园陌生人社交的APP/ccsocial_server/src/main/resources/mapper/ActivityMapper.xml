@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ccsocial.mapper.ActivityMapper">
+
+    <select id="getActivityLabels" resultType="cn.ccsocial.model.Label">
+        select * from activityLabel
+    </select>
+
+    <select id="getActivityLabelTypes" resultType="String">
+       select label_type from activityLabel group by label_type
+    </select>
+
+    <select id="getActivityLabelByType" resultType="cn.ccsocial.model.Label">
+        select label_id,label_name from activityLabel where label_type = #{labelType}
+    </select>
+
+    <select id="getActivityLabelByTypes" resultType="cn.ccsocial.model.Label">
+        select label_id,label_name from activityLabel where label_type in
+        <foreach item="labelType" index="index" collection="array"
+                 open="(" separator="," close=")">
+             #{labelType}
+        </foreach>
+    </select>
+
+    <select id="getActivityLabelBylabelIds" resultType="cn.ccsocial.model.Label">
+        select * from activityLabel where label_id in
+        <foreach item="labelId" index="index" collection="array"
+                 open="(" separator="," close=")">
+            #{labelId}
+        </foreach>
+    </select>
+
+<!--    <insert id="createActivity" useGeneratedKeys="true" keyProperty="activityId" parameterType="cn.ccsocial.model.Activity">-->
+<!--        insert into activity(activity_name,activity_max_people_num,activity_location,activity_is_private,activity_describe,-->
+<!--        activity_label,activity_start_time,activity_end_time,activity_create_time,activity_long,activity_lat,activity_range)-->
+<!--        values (#{activityName,jdbcType=VARCHAR},#{activityMaxPeopleNum,jdbcType=VARCHAR},#{activityLocation,jdbcType=VARCHAR},-->
+<!--        #{activityIsPrivate,jdbcType=VARCHAR}, #{activityDescribe,jdbcType=VARCHAR},#{activityLabel,jdbcType=VARCHAR},-->
+<!--        #{activityStartTime,jdbcType=VARCHAR},#{activityEndTime,jdbcType=VARCHAR},#{activityCreateTime,jdbcType=VARCHAR},-->
+<!--        #{activityLong,jdbcType=VARCHAR},#{activityLat,jdbcType=VARCHAR},#{activityRange,jdbcType=VARCHAR}-->
+<!--        )-->
+<!--    </insert>-->
+
+            <select id="createActivity" statementType="CALLABLE" parameterType="cn.ccsocial.model.Activity" resultType="cn.ccsocial.model.Activity">
+                call proc_ActivityInsert(#{activityName,jdbcType=VARCHAR},#{activityMaxPeopleNum,jdbcType=VARCHAR},#{activityLocation},
+                #{activityIsPrivate,jdbcType=VARCHAR}, #{activityDescribe,jdbcType=VARCHAR},#{activityLabel,jdbcType=VARCHAR},
+                #{activityStartTime,jdbcType=VARCHAR},#{activityEndTime,jdbcType=VARCHAR},#{activityCreateTime,jdbcType=VARCHAR},
+                #{activityLong,jdbcType=VARCHAR},#{activityLat,jdbcType=VARCHAR},#{activityRange,jdbcType=VARCHAR})
+            </select>
+
+            <update id="updateActivity" parameterType="cn.ccsocial.model.Activity">
+                update Activity
+                <set>
+                    <if test="activityName!= null">activityName=#{activityName},</if>
+                    <if test="activityMaxPeopleNum != null">activityMaxPeopleNum=#{activityMaxPeopleNum},</if>
+                    <if test="activityLocation != null">activityLocation=#{activityLocation},</if>
+                    <if test="activityIsPrivate != null">activityIsPrivate=#{activityIsPrivate}</if>
+                    <if test="activityDescribe != null">activityDescribe=#{activityDescribe}</if>
+                    <if test="activityStartTime != null">activityStartTime=#{activityStartTime}</if>
+                    <if test="activityEndTime != null">activityEndTime=#{activityEndTime}</if>
+                    <if test="activityLabel != null">activityLabel=#{activityLabel}</if>
+                    <if test="activityLong != null">activityLong=#{activityLong}</if>
+                    <if test="activityLat != null">activityLat=#{activityLat}</if>
+                    <if test="activityRange != null">activityRange=#{activityRange}</if>
+                 </set>
+                where memberId=#{memberId}
+            </update>
+
+            <update id="bindTid" parameterType="String">
+                update activity set activity_tid = #{activityTid} where activity_id = #{activityId}
+            </update>
+
+            <select id="selectTypeLabelNum" resultType="Integer">
+                select count(*) from activityLabel where label_type = #{labelType}
+            </select>
+
+            <select id="getActivityByActivityId" resultType="cn.ccsocial.model.Activity">
+                select * from activity where activity_id = #{activityId}
+            </select>
+
+            <select id="selectRecommendActivity" resultType="cn.ccsocial.model.Activity">
+                select * from activity
+                order by (
+                             case
+                                 when activity_start_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                                     then 1
+                                 when activity_end_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                                     then 2
+                                 else 3
+                                 end)
+                limit 0,#{listSize}
+            </select>
+
+            <select id="selectActivity" resultType="cn.ccsocial.model.Activity">
+                select * from activity
+            </select>
+
+            <select id="selectRecommendActivityByLabel" resultType="cn.ccsocial.model.Activity">
+                select * from activity where activity_label in
+                <foreach item="label" index="index" collection="labels"
+                         open="(" separator="," close=")">
+                    #{label}
+                </foreach>
+                order by (
+                case
+                  when activity_start_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                      then 1
+                  when activity_end_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                      then 2
+                  else 3
+                end)
+                limit 0,#{listSize}
+            </select>
+
+            <select id="countActivityByKey" resultType="Integer">
+                select count(*) from activity where
+                    activity_name like CONCAT(CONCAT('%',#{key}),'%')
+                    or
+                    activity_describe like  CONCAT(CONCAT('%',#{key}),'%')
+            </select>
+
+            <select id="selectActivityByKey" resultType="cn.ccsocial.model.Activity">
+                select * from activity where
+                    activity_name like CONCAT(CONCAT('%',#{key}),'%')
+                    or
+                    activity_describe like  CONCAT(CONCAT('%',#{key}),'%')
+                order by activity_end_time desc,activity_start_time desc
+                limit #{page.startLoaction},#{page.pageQty}
+            </select>
+
+            <select id="countActivityByCondition" resultType="Integer">
+                select count(*) from activity where activity_label in
+                <foreach item="label" index="index" collection="labelList"
+                         open="(" separator="," close=")">
+                    #{label.labelId}
+                </foreach>
+                <if test="startTimeStamp != null and startTimeStamp != ''">
+                    and activity_start_time > #{startTimeStamp}
+                </if>
+                <if test="endTimeStamp != null and endTimeStamp != ''">
+                    and activity_start_time &lt; #{endTimeStamp}
+                </if>
+                <if test="status == 'ready'">
+                    and activity_start_time > #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'started'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'end'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time &lt; #{nowTimeStamp}
+                </if>
+            </select>
+
+            <select id="selectActivityByCondition" resultType="cn.ccsocial.model.Activity">
+                 select * from activity where activity_label in
+                <foreach item="label" index="index" collection="labelList"
+                         open="(" separator="," close=")">
+                    #{label.labelId}
+                </foreach>
+                <if test="startTimeStamp != null and startTimeStamp != ''">
+                    and activity_start_time > #{startTimeStamp}
+                </if>
+                <if test="endTimeStamp != null and endTimeStamp != ''">
+                    and activity_start_time &lt; #{endTimeStamp}
+                </if>
+                <if test="status == 'ready'">
+                    and activity_start_time > #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'started'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'end'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time &lt; #{nowTimeStamp}
+                </if>
+                order by (
+                case
+                when activity_start_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                then 1
+                when activity_end_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                then 2
+                else 3
+                end)
+                limit #{page.startLoaction},#{page.pageQty}
+            </select>
+
+            <select id="countUserActivityByCondition" resultType="Integer">
+                select count(*) from activity where activity_label in
+                <foreach item="label" index="index" collection="labelList"
+                         open="(" separator="," close=")">
+                    #{label.labelId}
+                </foreach>
+                and activity_id in (select activity_id from activityMember where user_ccid =#{userCcid})
+                <if test="startTimeStamp != null and startTimeStamp != ''">
+                    and activity_start_time > #{startTimeStamp}
+                </if>
+                <if test="endTimeStamp != null and endTimeStamp != ''">
+                    and activity_start_time &lt; #{endTimeStamp}
+                </if>
+                <if test="status == 'ready'">
+                    and activity_start_time > #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'started'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'end'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time &lt; #{nowTimeStamp}
+                </if>
+            </select>
+
+            <update id="uploadPic" parameterType="String">
+                update activity set activity_pic = #{picPath} where activity_id = #{activityId}
+            </update>
+
+            <select id="selectUserActivityByCondition" resultType="cn.ccsocial.model.Activity">
+                select * from activity where activity_label in
+                <foreach item="label" index="index" collection="labelList"
+                         open="(" separator="," close=")">
+                    #{label.labelId}
+                </foreach>
+                and activity_id in (select activity_id from activityMember where user_ccid =#{userCcid})
+                <if test="startTimeStamp != null and startTimeStamp != ''">
+                    and activity_start_time > #{startTimeStamp}
+                </if>
+                <if test="endTimeStamp != null and endTimeStamp != ''">
+                    and activity_start_time &lt; #{endTimeStamp}
+                </if>
+                <if test="status == 'ready'">
+                    and activity_start_time > #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'started'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time > #{nowTimeStamp}
+                </if>
+                <if test="status == 'end'">
+                    and activity_start_time &lt; #{nowTimeStamp}
+                    and activity_end_time &lt; #{nowTimeStamp}
+                </if>
+                order by (
+                case
+                when activity_start_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                then 1
+                when activity_end_time>(SELECT REPLACE(unix_timestamp(current_timestamp(3)),'.',''))
+                then 2
+                else 3
+                end)
+                limit #{page.startLoaction},#{page.pageQty}
+            </select>
+
+            <delete id="deleteActivity" parameterType="String">
+                delete from activity where activity_id = #{activityId}
+            </delete>
+
+            <select id="selectCreatorAccid" resultType="String">
+                SELECT user_accid FROM `user` WHERE user_ccid = (
+                SELECT user_ccid FROM activityMember WHERE
+                user_activity_identify = 'creator' AND activity_id = #{activityId})
+            </select>
+        </mapper>

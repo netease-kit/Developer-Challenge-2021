@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.appTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        renderscriptTargetApi rootProject.ext.compileSdkVersion
+        renderscriptSupportModeEnabled true
+    }
+
+    buildTypes {
+        debug {
+            //自定义Gradle常量
+            buildConfigField("boolean", "LOG_DEBUG", "true")
+            buildConfigField("String", "LOG_TAG", "\"CCSocial\"")
+            buildConfigField("String", "SP_NAME", "\"Config\"")
+        }
+
+        release {
+            //自定义Gradle常量
+            buildConfigField("boolean", "LOG_DEBUG", "true")
+            buildConfigField("String", "LOG_TAG", "\"CCSocial\"")
+            buildConfigField("String", "SP_NAME", "\"Config\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //kotlin
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0-rc01'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //工具类
+    implementation 'com.blankj:utilcodex:1.29.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.android.support:support-annotations:23.1.1'
+
+    //必须使用
+    api 'com.lzy.net:okgo:2.1.4'        //可以单独使用，不需要依赖下方的扩展包
+    api 'com.lzy.net:okrx:0.1.2'        //RxJava扩展支持，根据需要添加
+    api 'com.lzy.net:okserver:1.1.3'    //下载管理和上传管理扩展，根据需要添加
+
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.0.2'
+    implementation "com.squareup.retrofit2:converter-scalars:2.1.0"
+//    implementation "com.squareup.retrofit2:converter-gson:2.1.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.2.0"
+    implementation "io.reactivex.rxjava2:rxjava:2.0.6"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+}

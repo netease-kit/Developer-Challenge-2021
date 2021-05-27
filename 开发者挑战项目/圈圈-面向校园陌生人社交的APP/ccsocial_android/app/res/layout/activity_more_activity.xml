@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryWhite">
+    <!--  筛选-起始  -->
+    <com.netease.nim.ccsocial_nim.mainTab.fragment.IndexFragment.MyCircleActivity.FilterHeadView
+        android:id="@+id/more_activity_filter_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.netease.nim.ccsocial_nim.mainTab.fragment.IndexFragment.MyCircleActivity.FilterHeadView>
+    <!--  筛选-结束  -->
+    <include layout="@layout/fragment_my_activity_circle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/more_activity_filter_box"></include>
+</RelativeLayout>

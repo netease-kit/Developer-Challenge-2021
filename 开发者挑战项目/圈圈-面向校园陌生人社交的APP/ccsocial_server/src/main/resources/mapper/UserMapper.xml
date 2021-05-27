@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ccsocial.mapper.UserMapper">
+    <select id="selectByCcid" resultType="cn.ccsocial.model.User">
+        select * from user where user_ccid = #{ccid}
+    </select>
+
+    <select id="selectByFaccids" resultType="cn.ccsocial.model.User">
+        select * from user where user_accid in
+        <foreach item="friend" index="index" collection="list"
+                 open="(" separator="," close=")">
+            #{friend.faccid}
+        </foreach>
+    </select>
+
+    <select id="getUserList" resultType="cn.ccsocial.model.User">
+        select * from user
+    </select>
+
+    <insert id="registerUser" parameterType="cn.ccsocial.model.User">
+        insert into user(user_ccid,user_accid,user_phone,user_name,user_sex,user_password,user_create_time)
+        values (#{userCcid,jdbcType=VARCHAR},#{userAccid,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{userSex,jdbcType=VARCHAR},#{userPassword,jdbcType=VARCHAR},#{userCreateTime,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectByPhone" resultType="cn.ccsocial.model.User">
+        select * from user where user_phone =#{userPhone}
+    </select>
+
+    <select id="countByCcid" resultType="integer">
+        select count(*) from user where user_ccid = #{ccid}
+    </select>
+
+    <update id="setUserPassword" parameterType="String">
+        update user set user_password = #{userPassword} where user_ccid = #{userCcid}
+    </update>
+
+    <update id="addUserHobbie" parameterType="String">
+        update user set user_hobbies = #{labels} where user_ccid = #{userCcid}
+    </update>
+
+    <update id="uploadAvatar" parameterType="String">
+        update user set user_avatar = #{avatarPath} where user_ccid = #{userCcid}
+    </update>
+
+    <update id="bindEducationalAccount" parameterType="cn.ccsocial.model.EducationalAccount">
+        update user
+        set user_educational_id = #{userEducationalId},user_educational_password = #{userEducationalPassword}
+        where user_ccid = #{userCcid}
+    </update>
+
+    <select id="selectHobbieByCcid" resultType="String">
+        select user_hobbies from user where user_ccid = #{userCcid}
+    </select>
+
+    <select id="selectAccidByCcid" resultType="String">
+        select user_accid from user where user_ccid = #{userCcid}
+    </select>
+</mapper>

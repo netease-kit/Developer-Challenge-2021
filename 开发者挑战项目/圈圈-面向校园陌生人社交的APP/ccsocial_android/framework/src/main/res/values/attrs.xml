@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension"/>
+        <attr name="btnTextSize" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="CarrouselLayout">
+
+        <attr name="autoRotation" format="boolean"/>
+        <attr name="rotationTime" format="integer"/>
+        <attr name="r" format="dimension"/>
+
+        <attr name="rotateDirection">
+            <enum name="clockwise" value="0"/>
+            <enum name="anticlockwise" value="1"/>
+        </attr>
+
+    </declare-styleable>
+
+    <!--  我的-功能  -->
+    <declare-styleable name="layout_function_item">
+        <attr name="left_icon" format="integer"/>
+        <attr name="show_left_icon" format="boolean"/>
+        <attr name="left_text" format="string"/>
+        <attr name="right_text" format="string"/>
+        <attr name="show_right_arrow" format="boolean"/>
+        <attr name="show_bottom_line" format="boolean"/>
+    </declare-styleable>
+<!--    图片圆角-->
+    <declare-styleable name="RoundImageView">
+        <attr name="circle" format="boolean"  />
+        <attr name="c_radius" format="dimension" />
+    </declare-styleable>
+</resources>

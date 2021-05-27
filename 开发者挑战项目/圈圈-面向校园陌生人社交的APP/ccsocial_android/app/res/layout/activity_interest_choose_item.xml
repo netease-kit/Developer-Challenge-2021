@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_interest_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgLightGray">
+
+    <TextView
+        android:id="@+id/text_draw_activity_pos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_radius_gray_10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:text="篮球"
+        android:textSize="24sp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView9"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/shape_radius_blue_10dp"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:text="篮球"-->
+    <!--        android:textColor="@color/colorPrimaryWhite"-->
+    <!--        android:textSize="24sp" />-->
+</FrameLayout>

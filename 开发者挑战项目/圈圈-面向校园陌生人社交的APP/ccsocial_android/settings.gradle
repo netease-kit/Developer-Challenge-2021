@@ -1,0 +1,10 @@
+include ':rtskit'
+include ':uikit'
+include ':G2:nertcvideocall'
+include ':G2:ui'
+include ':framework'
+include ':framework'
+include ':faceunity'
+include ':jrmfRpWalletlib'
+include ':app'
+rootProject.name = "ccsocial_nim"

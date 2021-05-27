@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ccsocial.mapper.FriendMapper">
+    <select id="getFriendsList" resultType="String">
+        select friend_ccid from friend where user_ccid=#{ccid}
+        union
+        select user_ccid from friend where friend_ccid=#{ccid}
+    </select>
+
+    <!--向好友关系表中插入新关系-->
+     <insert id="addFriend" parameterType="cn.ccsocial.model.FriendRelationship">
+        insert into friend(user_ccid,friend_ccid,friend_create_time)
+        values (#{userCcid,jdbcType=VARCHAR},#{friendCcid,jdbcType=VARCHAR},#{friendCreateTime,jdbcType=VARCHAR})
+     </insert>
+
+    <!--向好友关系表中插入新关系（使用Accid先去查询ccid）-->
+    <insert id="addFriendByAccid">
+        replace into friend(user_ccid,friend_ccid,friend_create_time)
+        values (
+        (select user_ccid from user where user_accid = #{userAccid,jdbcType=VARCHAR}),
+        (select user_ccid from user where user_accid = #{friendAccid,jdbcType=VARCHAR}),
+        #{friendCreateTime,jdbcType=VARCHAR})
+    </insert>
+
+    <!--向好友关系表中删除关系-->
+    <delete id="delFriendByAccid" parameterType="String">
+        delete from friend where user_ccid =(select user_ccid from user where user_accid = #{userAccid})
+        and friend_ccid = (select user_ccid from user where user_accid = #{friendAccid})
+    </delete>
+
+
+    <select id="getFriendRelationship" resultType="cn.ccsocial.model.FriendRelationship">
+        select * from friend where user_ccid=#{userCcid,jdbcType=VARCHAR}
+        and friend_ccid=#{friendCcid,jdbcType=VARCHAR}
+    </select>
+</mapper>

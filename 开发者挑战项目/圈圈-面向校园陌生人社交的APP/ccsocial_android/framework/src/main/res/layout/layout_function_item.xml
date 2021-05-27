@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center"
+    android:id="@+id/layout_function_item">
+
+
+    <ImageView
+        android:id="@+id/img_me_icon_item"
+        android:layout_width="22dp"
+        android:layout_height="22dp" />
+
+    <TextView
+        android:id="@+id/text_me_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:textSize="14dp"
+        android:textColor="@color/colorFontBlack"
+        android:text="个人资料" />
+
+    <TextView
+        android:id="@+id/text_me_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textColor="@color/colorFontGray"
+        android:text="张三" />
+
+    <ImageView
+        android:id="@+id/img_me_right_item"
+        android:layout_width="16sp"
+        android:layout_height="16sp"
+        android:src="@drawable/icon_login_right_gray_arrow" />
+</LinearLayout>

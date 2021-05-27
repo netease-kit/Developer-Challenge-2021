@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--复用时的setOnClickListener-->
+    <item name="tag_view_click" type="id"/>
+    <!--当前viewHolder-->
+    <item name="tag_view_holder" type="id" />
+    <!--当前bean-->
+    <item name="tag_view_bean" type="id" />
+    <!--当前adapter-->
+    <item name="tag_view_adapter" type="id" />
+    <!--当前containerAdapter-->
+    <item name="tag_view_container" type="id" />
+</resources>
