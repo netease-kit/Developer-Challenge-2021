@@ -1,0 +1,1 @@
+<view class="container"><view class="tip"><u-icon vue-id="ee481000-1" name="checkmark-circle-fill" size="200" color="#00b264" bind:__l="__l"></u-icon><text class="txt">{{txt}}</text></view><view class="f-fixed"><u-button bind:click="__e" vue-id="ee481000-2" data-event-opts="{{[['^click',[['jump']]]]}}" bind:__l="__l" vue-slots="{{['default']}}">{{btnTxt}}</u-button></view></view>

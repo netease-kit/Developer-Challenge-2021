@@ -1,0 +1,72 @@
+
+page {
+	background-color: #F5F5F5;
+}
+.popup-wrap {
+	padding: 50rpx 30rpx;
+}
+.popup-wrap .tag-input {
+	background-color: #F5F5F5;
+	margin-bottom: 30rpx;
+	padding: 20rpx;
+}
+.popup-wrap>.title {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 20rpx;
+}
+.btn-wrap {
+	display: -webkit-box;
+	display: flex;
+}
+.btn-wrap .btn-cancel {
+	width: 50%;
+	padding: 20rpx 0;
+	text-align: center;
+	background-color: #F5F5F5;
+}
+.btn-wrap .btn-confirm {
+	background-color: #8687fd;
+	width: 50%;
+	padding: 20rpx 0;
+	text-align: center;
+	color: #FFFFFF;
+}
+.input {
+	border-bottom: 1px solid #e2e2e2;
+	padding: 10rpx;
+}
+.tag-add {
+	padding: 20rpx;
+	background-color: #F5F5F5;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+}
+
+/* 标签 */
+.tag {
+	padding: 10rpx 20rpx;
+	border-radius: 20rpx;
+	font-size: 24rpx;
+	display: inline-block;
+	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+	background-color: #ffebe5;
+}
+.tag:nth-child(2n) {
+	background-color: #ecf9f2;
+}
+.tag:nth-child(3n) {
+	background-color: #fff7e5;
+}
+.tag:nth-child(5n) {
+	background-color: #b3e0ff;
+}
+

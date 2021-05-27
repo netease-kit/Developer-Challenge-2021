@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 
+import configUniCloud from './common/configUniCloudRequest.js'
+
 import request from './utils/request.js'
 Vue.prototype.$H = request;
 

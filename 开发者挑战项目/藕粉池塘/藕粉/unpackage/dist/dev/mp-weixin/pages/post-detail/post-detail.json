@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-toast": "/uview-ui/components/u-toast/u-toast"
+  }
+}

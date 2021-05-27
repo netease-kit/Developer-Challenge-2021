@@ -3,9 +3,9 @@
 		<view class="head">
 			<block v-if="hasLogin">
 				<view class="userinfo" @click="toUcenter">
-					<u-avatar :src="userInfo.avatar"></u-avatar>
+					<u-avatar :src="userInfo.avatarUrl"></u-avatar>
 					<view class="username">
-						<text>{{userInfo.username}}</text>
+						<text>{{userInfo.nickName}}</text>
 						<text>{{userInfo.intro}}</text>
 					</view>
 					<text class="iconfont icon-right"></text>
@@ -86,7 +86,7 @@
 			return {
 				mAd:this.$c.mAd,
 				userInfo: "",
-				hasLogin: false
+				hasLogin: false,
 			}
 		},
 		onLoad() {
@@ -96,10 +96,13 @@
 				menus: ['shareAppMessage', 'shareTimeline']
 			})
 			//#endif
+			
 		},
 		onShow() {
-			if (uni.getStorageSync("hasLogin")) {
-				this.getUserInfo();
+			let userInfo = getApp().globalData.userInfo
+			this.userInfo = userInfo?userInfo:''
+			
+			if(this.userInfo != ''){
 				this.hasLogin = true;
 			}
 		},

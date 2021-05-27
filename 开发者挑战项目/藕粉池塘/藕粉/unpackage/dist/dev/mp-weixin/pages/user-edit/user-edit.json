@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "u-form": "/uview-ui/components/u-form/u-form",
+    "u-form-item": "/uview-ui/components/u-form-item/u-form-item",
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "u-input": "/uview-ui/components/u-input/u-input"
+  }
+}

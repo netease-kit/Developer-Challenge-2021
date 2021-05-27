@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/post-detail/post-detail",
+    "pages/login/login",
+    "pages/ucenter/ucenter",
+    "pages/topic-detail/topic-detail",
+    "pages/discuss/discuss",
+    "pages/my-discuss/my-discuss",
+    "pages/my-topic/my-topic",
+    "pages/my-dynamic/my-dynamic",
+    "pages/my-collection/my-collection",
+    "pages/plus-post/plus-post",
+    "pages/message/message",
+    "pages/message-list/message-list",
+    "pages/my-fans/my-fans",
+    "pages/my-follow/my-follow",
+    "pages/topic-add/topic-add",
+    "pages/more/more",
+    "pages/topic-cate-list/topic-cate-list",
+    "pages/discuss-add/discuss-add",
+    "pages/user-edit/user-edit",
+    "pages/user-edit/edit-submit",
+    "pages/topic-list/topic-list",
+    "pages/jump/jump",
+    "pages/pool/index/index",
+    "pages/article-detail/article-detail",
+    "pages/video-detail/video-detail",
+    "pages/chat/chat",
+    "pages/discuss-list/discuss-list",
+    "pages/choose-topic/choose-topic",
+    "pages/webview/webview"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "藕粉池塘",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#2c2c2c",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/home-1.png",
+        "selectedIconPath": "static/tabbar/home.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "iconPath": "static/tabbar/quanzi-1.png",
+        "selectedIconPath": "static/tabbar/quanzi.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/pool/index/index",
+        "iconPath": "static/tabbar/pool-1.png",
+        "selectedIconPath": "static/tabbar/pool.png",
+        "text": "池塘"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "static/tabbar/msg-1.png",
+        "selectedIconPath": "static/tabbar/msg.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/tabbar/my-1.png",
+        "selectedIconPath": "static/tabbar/my.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户位置信息"
+    }
+  },
+  "usingComponents": {}
+}

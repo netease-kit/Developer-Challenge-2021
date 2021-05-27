@@ -26,12 +26,6 @@
 				"text": "池塘"
 			},
 			{
-				"pagePath": "pages/message/message",
-				"iconPath": "static/tabbar/msg-1.png",
-				"selectedIconPath": "static/tabbar/msg.png",
-				"text": "消息"
-			},
-			{
 				"pagePath": "pages/my/my",
 				"iconPath": "static/tabbar/my-1.png",
 				"selectedIconPath": "static/tabbar/my.png",

@@ -1,0 +1,1 @@
+<view class="login"><image class="logo" src="{{shareCover}}"></image><text class="txt1">申请获取以下权限</text><text class="txt2">获取你的公开信息（昵称、头像等）</text><u-button vue-id="35a7246c-1" type="success" lang="zh_CN" shape="circle" data-event-opts="{{[['^click',[['userLogin']]]]}}" bind:click="__e" bind:__l="__l" vue-slots="{{['default']}}">授权登录</u-button></view>

@@ -8,13 +8,13 @@
 			<view class="class-wrap">
 				<navigator :url="'/pages/topic-cate-list/topic-cate-list?class_id='+topicClassTop[0].cate_id" class="first-calss">
 					<image class="img-wh100" mode="aspectFill" :src="topicClassTop[0].cover_image"></image>
-					<text>{{topicClassTop[0].cate_name}}</text>
+					<text>{{topicClassTop[0].name}}</text>
 				</navigator>
 				<view class="class-right">
 					<navigator :url="'/pages/topic-cate-list/topic-cate-list?class_id='+item.cate_id" class="class-item" v-if="index > 0"
 					 v-for="(item,index) in topicClassTop" :key="index">
 						<image class="img-wh100" mode="aspectFill" :src="item.cover_image"></image>
-						<text>{{item.cate_name}}</text>
+						<text>{{item.name}}</text>
 					</navigator>
 					<navigator url="/pages/topic-cate-list/topic-cate-list" class="class-item">
 						<image class="img-wh100" mode="aspectFill" src="https://oss.ymeoo.cn/20201128160653507763323.jpg"></image>
@@ -29,7 +29,7 @@
 
 			<!-- 推荐 -->
 			<view v-show="current == 0" style="border-radius: 10rpx;overflow: hidden;">
-				<list :list="topicList" :loadStatus="loadStatus"></list>
+				<list :list="IMData.teams" :loadStatus="loadStatus"></list>
 			</view>
 
 			<!-- 热议话题 -->
@@ -59,17 +59,18 @@
 						name: "热议话题"
 					}
 				],
-				topicList: [],
+				IMData:{teams:[]},
 				page: 1,
 				loadStatus: "loadmore",
 				topicClassTop: [],
 				disList: []
 			};
 		},
-		onLoad() {
-			this.getTopicList();
-			this.getTopClassList();
-			this.getDisList();
+		onShow() {
+			this.IMData = getApp().globalData.IMData
+			this.getTopClassList()
+			this.getTopicList()
+			this.getDisList()
 		},
 		onPullDownRefresh() {
 			this.page = 1;

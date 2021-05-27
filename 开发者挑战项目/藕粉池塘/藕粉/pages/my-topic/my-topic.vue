@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<topic-list :list="topicList" :loadStatus="loadStatus"></topic-list>
+		<topic-list :list="IMData.teams" :loadStatus="loadStatus"></topic-list>
 
 		<!-- 创建池塘按钮 -->
 		<view style="height: 120rpx;"></view>
@@ -23,11 +23,19 @@
 			return {
 				topicList: [],
 				loadStatus: "loading",
-				page: 1
-			};
+				page: 1,
+				creatingPoolName: '',
+				intro: '',
+				userInfo: '',
+				IMData: {
+					teams:[]
+				}
+			}
 		},
-		onLoad() {
-			this.getMyTopic();
+		onShow() {
+			this.userInfo = getApp().globalData.userInfo
+			this.IMData = getApp().globalData.IMData
+			console.log(this.IMData.teams);
 		},
 		onReachBottom() {
 			this.page++;

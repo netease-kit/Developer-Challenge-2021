@@ -1,0 +1,1 @@
+<view><user-list vue-id="79ec5bda-1" list="{{userList}}" loadStatus="{{loadStatus}}" bind:__l="__l"></user-list></view>

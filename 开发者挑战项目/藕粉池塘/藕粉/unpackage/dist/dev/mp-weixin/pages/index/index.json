@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "",
+  "backgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "u-navbar": "/uview-ui/components/u-navbar/u-navbar",
+    "u-tabs-swiper": "/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
+    "post-list": "/components/post-list/post-list",
+    "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "post-waterfall": "/components/post-waterfall/post-waterfall"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "discuss-list": "/components/discuss-list/discuss-list",
+    "dis-list": "/components/discuss-list/discuss-list"
+  }
+}

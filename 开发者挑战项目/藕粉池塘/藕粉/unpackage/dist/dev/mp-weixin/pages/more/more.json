@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "u-search": "/uview-ui/components/u-search/u-search",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "discuss-list": "/components/discuss-list/discuss-list",
+    "list": "/components/topic-list/topic-list"
+  }
+}
