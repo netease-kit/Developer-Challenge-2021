@@ -326,47 +326,17 @@ public class MainActivity extends UI implements ViewPager.OnPageChangeListener,
                             }
                         });
 
-                        //注册获取token的服务
-                        //在线上环境中，token的获取需要放到您的应用服务端完成，然后由服务器通过安全通道把token传递给客户端
-                        //Demo中使用的URL仅仅是demoserver，不要在您的应用中使用
-                        //详细请参考: http://dev.netease.im/docs?doc=server
+                        // 请求 rtc token 服务，若非安全模式不需设置，安全模式按照官网实现 token 服务通过如下接口设置回组件
                         NERTCVideoCall.sharedInstance().setTokenService((uid, callback) -> {
-                            String demoServer = "https://nrtc.netease.im/demo/getChecksum.action";
-                            new Thread(() -> {
-                                try {
-                                    String queryString = demoServer + "?uid=" +
-                                            uid + "&appkey=" + appKey;
-                                    URL requestedUrl = new URL(queryString);
-                                    HttpURLConnection connection = (HttpURLConnection) requestedUrl.openConnection();
-                                    connection.setRequestMethod("POST");
-                                    connection.setConnectTimeout(6000);
-                                    connection.setReadTimeout(6000);
-                                    if (connection.getResponseCode() == 200) {
-                                        String result = readFully(connection.getInputStream());
-                                        Log.d("Demo", result);
-                                        if (!TextUtils.isEmpty(result)) {
-                                            org.json.JSONObject object = new org.json.JSONObject(result);
-                                            int code = object.getInt("code");
-                                            if (code == 200) {
-                                                String token = object.getString("checksum");
-                                                if (!TextUtils.isEmpty(token)) {
-                                                    new Handler(getMainLooper()).post(() -> {
-                                                        callback.onSuccess(token);
-                                                    });
-                                                    return;
-                                                }
-                                            }
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                                new Handler(getMainLooper()).post(() -> {
-                                    callback.onSuccess(null);
-//                                    callback.onFailed(-1);
-                                });
-                            }).start();
+                            //获取token
+//                        Result result = network.requestToken(uid);
+//                        if (result.success) {
+//                            callback.onSuccess(result.token);
+//                        } else if (result.exception != null) {
+//                            callback.onException(result.exception);
+//                        } else {
+//                            callback.onFailed(result.code);
+//                        }
                         });
                         Intent intent = getIntent();
                         NimLog.d(TAG, String.format("onNotificationClicked INVENT_NOTIFICATION_FLAG:%s", intent.hasExtra(CallParams.INVENT_NOTIFICATION_FLAG)));
